@@ -9,6 +9,9 @@ public class InfoReport {
     private long id;
     private String msg;
 
+    public InfoReport() {
+    }
+
     public InfoReport(long id, String msg) {
         this.id = id;
         this.msg = msg;
@@ -28,5 +31,10 @@ public class InfoReport {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    @Override
+    public String toString() {
+        return "id: " + id + " data: " + msg;
     }
 }
