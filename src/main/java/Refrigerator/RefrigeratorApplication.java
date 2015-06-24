@@ -3,6 +3,7 @@ package Refrigerator;
 import org.springframework.web.client.RestTemplate;
 import smarthome.InfoReport;
 import java.time.LocalDateTime;
+import java.util.LinkedList;
 
 /**
  * Created by Scott on 6/13/15.
@@ -16,13 +17,13 @@ public class RefrigeratorApplication {
 
         while (true) {
 
-            Thread.sleep(1000);
+            Thread.sleep(5000);
 
             InfoReport newData = new InfoReport(1001, "This message is from Refrigerator 1001 sent at "+ LocalDateTime.now());
-            InfoReport result = restTemplate.postForObject( uri, newData, InfoReport.class);
+            LinkedList<InfoReport> results = restTemplate.postForObject( uri, newData, LinkedList.class);
             System.out.println("Sequence No. = " + l++);
             System.out.println("Client--->Server: " + newData.toString());
-            System.out.println("Server--->Client: " + result.toString() + " receive at " + LocalDateTime.now());
+            System.out.println("Server--->Client: " + results);
 
         }
 
