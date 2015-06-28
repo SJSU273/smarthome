@@ -1,31 +1,92 @@
 package tv;
 
+import tv.repository.AccessControlObject;
+import tv.repository.DeviceObject;
+import tv.repository.LWM2MSecurityObject;
+import tv.repository.LWM2MServerObject;
+import tv.service.*;
 
-import org.springframework.web.client.RestTemplate;
-import smarthome.InfoReport;
-import java.time.LocalDateTime;
-import java.util.LinkedList;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 
 /**
  * Created by Scott on 6/13/15.
  */
-public class TvApplication {
-    public static void main(String args[]) throws InterruptedException {
-        RestTemplate restTemplate = new RestTemplate();
-        long l = 0;
 
-        final String uri = "http://localhost:8080/report";
+public class TvApplication{
+
+    public static void main(String args[]) throws Exception {
+
+        // initialize security object[0]
+        LWM2MSecurityObject securityObject = new LWM2MSecurityObject();
+        securityObject.setBootstrapServer(true);
+        securityObject.setLWM2MServerURI("http://localhost:8081/bootstrap/tv");
+
+        // initialize server object[0]
+        LWM2MServerObject serverObject = new LWM2MServerObject();
+
+        // initialize device object[0]
+        DeviceObject device = new DeviceObject();
+        device.setManufacturer("SONY");
+        device.setModelNumber("UN65JS9500FXZA");
+        device.setSerialNumber("ZW153MRC300023V");
+        device.setFirmwareVersion("v1.10.8");
+
+        // initialize accessControl object[0]
+        AccessControlObject controlObject = new AccessControlObject();
+
 
         while (true) {
 
-            Thread.sleep(5000);
+            PrintMenu.menu();
 
-            InfoReport newData = new InfoReport(1002, "This message is from TV 1002 sent at "+ LocalDateTime.now());
-            LinkedList<InfoReport> results = restTemplate.postForObject( uri, newData, LinkedList.class);
-            System.out.println("Sequence No. = " + l++);
-            System.out.println("Client--->Server: " + newData.toString());
-            System.out.println("Server--->Client: " + results);
+            try{
+                BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+                String s = bufferRead.readLine();
 
+
+                switch (s) {
+                    case "1":
+                        BootstrapToServer bootstrapToServer = new BootstrapToServer(securityObject, serverObject, device);
+                        bootstrapToServer.boot();
+                        break;
+                    case "2":
+                    case "2.1":
+                        RegisterToServer request = new RegisterToServer(securityObject,serverObject,device);
+                        request.register();
+                        break;
+                    case "2.2":
+                        RegisterToServer request2 = new RegisterToServer(securityObject,serverObject,device);
+                        request2.update();
+                        break;
+                    case "2.3":
+                        RegisterToServer request3 = new RegisterToServer(securityObject,serverObject,device);
+                        request3.delete();
+                        break;
+
+                    case "3":
+                        System.out.println("T.B.D\n\n");
+                        break;
+                    case "4":
+                        ReportToServer reportToServer = new ReportToServer();
+                        reportToServer.sendOneReport();
+                        break;
+                    case "5":
+                        ShowStatus showStatus = new ShowStatus(securityObject, serverObject, device, controlObject);
+                        showStatus.show();
+                        break;
+
+                    default:
+                        System.out.println("Please input numbers 1, 2, 3, 4, or 5\n\n");
+
+                }
+            }
+            catch(IOException e)
+            {
+                e.printStackTrace();
+            }
         }
 
 
