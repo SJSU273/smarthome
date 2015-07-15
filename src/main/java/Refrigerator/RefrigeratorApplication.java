@@ -1,18 +1,14 @@
 package Refrigerator;
 
-import org.springframework.web.client.RestTemplate;
-import LWM2MServer.models.InfoReport;
 import tv.repository.AccessControlObject;
 import tv.repository.DeviceObject;
 import tv.repository.LWM2MSecurityObject;
 import tv.repository.LWM2MServerObject;
-import tv.service.*;
+import tv.services.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.time.LocalDateTime;
-import java.util.LinkedList;
 
 /**
  * Created by Scott on 6/13/15.

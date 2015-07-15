@@ -1,4 +1,4 @@
-package tv.service;
+package tv.services;
 
 import org.springframework.web.client.RestTemplate;
 import LWM2MServer.models.InfoReport;

@@ -4,7 +4,7 @@ import tv.repository.AccessControlObject;
 import tv.repository.DeviceObject;
 import tv.repository.LWM2MSecurityObject;
 import tv.repository.LWM2MServerObject;
-import tv.service.*;
+import tv.services.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;

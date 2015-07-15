@@ -1,7 +1,5 @@
-package tv.service;
+package tv.services;
 
-import LWM2MBootstrapServer.repository.LWM2MDevice;
-import org.springframework.beans.factory.annotation.Autowired;
 import tv.repository.AccessControlObject;
 import tv.repository.DeviceObject;
 import tv.repository.LWM2MSecurityObject;

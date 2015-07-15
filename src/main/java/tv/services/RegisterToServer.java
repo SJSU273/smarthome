@@ -1,4 +1,4 @@
-package tv.service;
+package tv.services;
 
 import org.springframework.web.client.RestTemplate;
 import tv.model.*;

@@ -1,8 +1,4 @@
-package tv.service;
-
-import org.apache.tomcat.util.codec.binary.StringUtils;
-
-import java.rmi.server.ExportException;
+package tv.services;
 
 /**
  * Created by Scott on 6/26/15.
