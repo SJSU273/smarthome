@@ -1,5 +1,8 @@
 package tv;
 
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import tv.repository.AccessControlObject;
 import tv.repository.DeviceObject;
 import tv.repository.LWM2MSecurityObject;
@@ -14,10 +17,13 @@ import java.io.InputStreamReader;
 /**
  * Created by Scott on 6/13/15.
  */
+@SpringBootApplication
+public class TvApplication implements CommandLineRunner{
 
-public class TvApplication{
+    public static void main(String args[])  { SpringApplication.run(TvApplication.class, args); }
 
-    public static void main(String args[]) throws Exception {
+    @Override
+    public void run(String... args) {
 
         // initialize security object[0]
         LWM2MSecurityObject securityObject = new LWM2MSecurityObject();
