@@ -3,10 +3,7 @@ package tv.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tv.repository.*;
 
 /**
@@ -33,100 +30,121 @@ public class TVController {
     private TVChannelObjectRepository tvChannelObjectRepository;
 
     //read by Xiaoxiao Li
-    @RequestMapping(value="/value", method= RequestMethod.GET)
-    private ResponseEntity<String> read(@RequestBody String s) {
+    @RequestMapping(value="/value/{objectId}/{objectInstanceId}/{resourceId}", method= RequestMethod.GET)
+    private ResponseEntity<String> read(@PathVariable("objectId") int objectId, @PathVariable("objectInstanceId") int objectInstanceId, @PathVariable("resourceId") int resourceId) {
 
-        System.out.println("Received Message: " + s);
+        System.out.println("Receive Read Message: "
+                + " objectId = "+ objectId
+                + " objectInstanceId = " + objectInstanceId
+                + " resourceId = " + resourceId);
 
-        System.out.println("Replied Message: 200 (OK)");
+        System.out.println("Send Message: 200 (OK)");
 
         return new ResponseEntity(HttpStatus.OK);
 
     }
 
     //write by Xiaoxiao Li
-    @RequestMapping(value="/value", method= RequestMethod.PUT)
-    private ResponseEntity<String> write(@RequestBody String s) {
+    @RequestMapping(value="/value/{objectId}/{objectInstanceId}/{resourceId}", method= RequestMethod.POST)
+    private ResponseEntity<String> write(@PathVariable("objectId") int objectId, @PathVariable("objectInstanceId") int objectInstanceId, @PathVariable("resourceId") int resourceId) {
 
-        System.out.println("Received Message: " + s);
+        System.out.println("Receive Write Message: "
+                + " objectId = "+ objectId
+                + " objectInstanceId = " + objectInstanceId
+                + " resourceId = " + resourceId);
 
-        System.out.println("Replied Message: 200 (OK)");
-
-        return new ResponseEntity(HttpStatus.OK);
-
-    }
-
-    //discover by Wei Si
-    @RequestMapping(value="/attribute", method= RequestMethod.GET)
-    private ResponseEntity<String> discover(@RequestBody String s) {
-
-        System.out.println("Received Message: " + s);
-
-        System.out.println("Replied Message: 200 (OK)");
+        System.out.println("Send Message: 200 (OK)");
 
         return new ResponseEntity(HttpStatus.OK);
 
     }
 
     //discover by Wei Si
-    @RequestMapping(value="/attribute", method= RequestMethod.PUT)
-    private ResponseEntity<String> writeAttributes(@RequestBody String s) {
+    @RequestMapping(value="/attribute/{objectId}/{objectInstanceId}/{resourceId}", method= RequestMethod.GET)
+    private ResponseEntity<String> discover(@PathVariable("objectId") int objectId, @PathVariable("objectInstanceId") int objectInstanceId, @PathVariable("resourceId") int resourceId) {
 
-        System.out.println("Received Message: " + s);
+        System.out.println("Receive Discover Message: "
+                + " objectId = "+ objectId
+                + " objectInstanceId = " + objectInstanceId
+                + " resourceId = " + resourceId);
 
-        System.out.println("Replied Message: 200 (OK)");
+        System.out.println("Send Message: 200 (OK)");
+
+        return new ResponseEntity(HttpStatus.OK);
+
+    }
+
+    //writeAttributes by Wei Si
+    @RequestMapping(value="/attribute/{objectId}/{objectInstanceId}/{resourceId}", method= RequestMethod.PUT)
+    private ResponseEntity<String> writeAttributes(@PathVariable("objectId") int objectId, @PathVariable("objectInstanceId") int objectInstanceId, @PathVariable("resourceId") int resourceId) {
+
+        System.out.println("Receive WriteAttributes Message: "
+                + " objectId = "+ objectId
+                + " objectInstanceId = " + objectInstanceId
+                + " resourceId = " + resourceId);
+
+        System.out.println("Send Message: 200 (OK)");
 
         return new ResponseEntity(HttpStatus.OK);
 
     }
 
     //execute by Xin Huang
-    @RequestMapping(value="/attribute", method= RequestMethod.POST)
-    private ResponseEntity<String> execute(@RequestBody String s) {
+    @RequestMapping(value="/attribute/{objectId}/{objectInstanceId}/{resourceId}", method= RequestMethod.POST)
+    private ResponseEntity<String> execute(@PathVariable("objectId") int objectId, @PathVariable("objectInstanceId") int objectInstanceId, @PathVariable("resourceId") int resourceId) {
 
-        System.out.println("Received Message: " + s);
+        System.out.println("Receive Execute Message: "
+                + " objectId = "+ objectId
+                + " objectInstanceId = " + objectInstanceId
+                + " resourceId = " + resourceId);
 
-        System.out.println("Replied Message: 200 (OK)");
+        System.out.println("Send Message: 200 (OK)");
 
         return new ResponseEntity(HttpStatus.OK);
 
     }
 
     //create by Xin Huang
-    @RequestMapping(value="/object", method= RequestMethod.POST)
-    private ResponseEntity<String> create(@RequestBody String s) {
+    @RequestMapping(value="/object/{objectId}/{objectInstanceId}", method= RequestMethod.POST)
+    private ResponseEntity<String> create(@PathVariable("objectId") int objectId, @PathVariable("objectInstanceId") int objectInstanceId) {
 
-        System.out.println("Received Message: " + s);
+        System.out.println("Receive Create Message: "
+                + " objectId = "+ objectId
+                + " objectInstanceId = " + objectInstanceId);
 
-        System.out.println("Replied Message: 200 (OK)");
+        System.out.println("Send Message: 200 (OK)");
 
         return new ResponseEntity(HttpStatus.OK);
 
     }
 
     //delete by Xin Huang
-    @RequestMapping(value="/object", method= RequestMethod.DELETE)
-    private ResponseEntity<String> delete(@RequestBody String s) {
+    @RequestMapping(value="/object/{objectId}/{objectInstanceId}", method= RequestMethod.DELETE)
+    private ResponseEntity<String> delete(@PathVariable("objectId") int objectId, @PathVariable("objectInstanceId") int objectInstanceId) {
 
-        System.out.println("Received Message: " + s);
+        System.out.println("Receive Delete Message: "
+                + " objectId = "+ objectId
+                + " objectInstanceId = " + objectInstanceId);
 
-        System.out.println("Replied Message: 200 (OK)");
+        System.out.println("Send Message: 200 (OK)");
 
         return new ResponseEntity(HttpStatus.OK);
 
     }
 
     //observe by Hongbo Tian
-    @RequestMapping(value="/observe", method= RequestMethod.GET)
-    private ResponseEntity<String> observe(@RequestBody String s) {
+    @RequestMapping(value="/observe/{objectId}/{objectInstanceId}/{resourceId}", method= RequestMethod.GET)
+    private ResponseEntity<String> observe(@PathVariable("objectId") int objectId, @PathVariable("objectInstanceId") int objectInstanceId, @PathVariable("resourceId") int resourceId) {
 
-        System.out.println("Received Message: " + s);
+        System.out.println("Received Message 3: "
+                + " objectId = "+ objectId
+                + " objectInstanceId = " + objectInstanceId
+                + " resourceId" + resourceId);
 
         System.out.println("Replied Message: 200 (OK)");
 
         return new ResponseEntity(HttpStatus.OK);
 
     }
-
 
 }

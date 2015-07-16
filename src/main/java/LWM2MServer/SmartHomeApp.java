@@ -1,6 +1,7 @@
 package LWM2MServer;
 
 import LWM2MServer.repository.IoTClientRepository;
+import LWM2MServer.services.ObserveRequest;
 import LWM2MServer.services.PrintMenu;
 import LWM2MServer.services.ShowRegisteredDevices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +82,8 @@ public class SmartHomeApp implements CommandLineRunner {
 
                     case "3":
                     case "3.1":
+                        ObserveRequest observeRequest = new ObserveRequest();
+                        observeRequest.observe();
                         System.out.println("Observe: T.B.D\n\n");
                         break;
 
