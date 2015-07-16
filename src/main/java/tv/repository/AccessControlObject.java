@@ -4,6 +4,8 @@ package tv.repository;
  * Created by Scott on 6/26/15.
  */
 public class AccessControlObject {
+    private String id;
+
     private int ObjectID;
     private int ObjectInstanceID;
     private int ACL;

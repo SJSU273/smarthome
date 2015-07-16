@@ -3,9 +3,7 @@ package LWM2MBootstrapServer.controllers;
 import LWM2MBootstrapServer.repository.LWM2MDevice;
 import LWM2MBootstrapServer.repository.LWM2MDeviceRepository;
 import LWM2MServer.models.InfoReport;
-import LWM2MServer.services.DataHouse2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.SerializationUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,8 +20,6 @@ import java.util.LinkedList;
 public class BootstrapController {
     @Autowired
     LWM2MDeviceRepository deviceRepository;
-
-    DataHouse2 dataHouse = new DataHouse2();
 
     @RequestMapping("/bootstrap/tv")
     public BootstrapResponse bootstrapTv(@RequestBody BootstrapRequest request) {
@@ -62,8 +58,7 @@ public class BootstrapController {
         //   if (r == null) return new LinkedList<InfoReport>(new InfoReport(0, "There is no any data in your request!"));
 
         //save to database
-        dataHouse.storeData(r);
-        return dataHouse.retrieveData(r.getId());
+        return new LinkedList<>();
 
     }
 

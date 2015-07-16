@@ -4,6 +4,7 @@ package tv.repository;
  * Created by Scott on 6/26/15.
  */
 public class LWM2MServerObject {
+    private String id;
     private int ShortServerID;
     private int Lifetime;
     private int DefaultMinimumPeriod;

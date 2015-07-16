@@ -34,7 +34,7 @@ public class SmartHomeBootstrapApp implements CommandLineRunner {
         String ModelNumber = "UN65JS9500FXZA";
         String SerialNumber = "ZW153MRC300023V";
         String EPN = "urn:dev:ops:" + Manufacturer + "-" + ModelNumber + "-" + SerialNumber;
-        String serverUri = "http://localhost:8080/register/tv";
+        String serverUri = "http://localhost:8081/register/tv";
 
         System.out.println("delete all db");
         deviceRepository.deleteAll();
@@ -59,19 +59,20 @@ public class SmartHomeBootstrapApp implements CommandLineRunner {
 
                 switch (s) {
 
-                    case "0":
+                    case "1":
+                    case "1.1":
                         deviceRepository.deleteAll();
                         System.out.println("All the registered devices have been removed from database.");
 
                         break;
 
-                    case "1":
+                    case "1.2":
                         ShowBootstrapDevices showBootstrapDevices = new ShowBootstrapDevices(deviceRepository);
                         showBootstrapDevices.display();
                         break;
 
                     default:
-                        System.out.println("Please input number(s) 1\n\n");
+                        System.out.println("Please input number(s) 1.1 1.2\n\n");
 
                 }
             }

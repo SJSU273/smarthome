@@ -1,5 +1,6 @@
 package tv.repository;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Service;
 
 /**
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
  */
 
 public class LWM2MSecurityObject {
+    private String id;
     private String LWM2MServerURI;
     private boolean BootstrapServer;
     private int SecurityMode;
@@ -86,8 +88,9 @@ public class LWM2MSecurityObject {
 
     @Override
     public String toString() {
-        return "LWM2MSecurityObject: {" +
-                "LWM2MServerURI='" + LWM2MServerURI + '\'' +
+        return "LWM2MSecurityObject{" +
+                "id='" + id + '\'' +
+                ", LWM2MServerURI='" + LWM2MServerURI + '\'' +
                 ", BootstrapServer=" + BootstrapServer +
                 ", SecurityMode=" + SecurityMode +
                 ", KeyOrIdentity='" + KeyOrIdentity + '\'' +

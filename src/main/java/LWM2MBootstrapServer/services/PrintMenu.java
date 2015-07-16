@@ -12,8 +12,9 @@ public class PrintMenu {
         System.out.println(stars);
         System.out.printf("|%48s|\n",welcome);
         System.out.println(stars);
-        System.out.printf("|%-48s|\n", " 0: Delete all the Bootstrap Devices");
-        System.out.printf("|%-48s|\n", " 1: Show all the Bootstrap Devices");
+        System.out.printf("|%-48s|\n", " 1: Bootstrap");
+        System.out.printf("|%-48s|\n", "    1.1: Delete all the Bootstrap Devices");
+        System.out.printf("|%-48s|\n", "    1.2: Show all the Bootstrap Devices");
         System.out.println(stars);
         System.out.println("Please input here:");
     }

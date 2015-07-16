@@ -26,6 +26,8 @@ public class SmartHomeApp implements CommandLineRunner {
     @Override
     public void run(String...args) {
 
+        ioTClientRepository.deleteAll();
+
         while (true) {
 
             PrintMenu.menu();

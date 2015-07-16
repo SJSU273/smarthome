@@ -1,25 +1,30 @@
 package tv.services;
 
-import tv.repository.AccessControlObject;
-import tv.repository.DeviceObject;
-import tv.repository.LWM2MSecurityObject;
-import tv.repository.LWM2MServerObject;
+
+import tv.repository.*;
+
+import java.util.List;
 
 /**
  * Created by Scott on 6/26/15.
  */
+
 public class ShowStatus {
 
-    LWM2MSecurityObject securityObject;
-    LWM2MServerObject serverObject;
-    DeviceObject device;
-    AccessControlObject controlObject;
+    private AccessControlObjectRepository accessControlObjectRepository;
+    private DeviceObjectRepository deviceObjectRepository;
+    private LWM2MSecurityObjectRepository lwm2MSecurityObjectRepository;
+    private LWM2MServerObjectRepository lwm2MServerObjectRepository;
+    private TVChannelObjectRepository tvChannelObjectRepository;
+    private TVControlObjectRepository tvControlObjectRepository;
 
-    public ShowStatus(LWM2MSecurityObject securityObject, LWM2MServerObject serverObject, DeviceObject device, AccessControlObject controlObject) {
-        this.securityObject = securityObject;
-        this.serverObject = serverObject;
-        this.device = device;
-        this.controlObject = controlObject;
+    public ShowStatus(AccessControlObjectRepository accessControlObjectRepository, DeviceObjectRepository deviceObjectRepository, LWM2MSecurityObjectRepository lwm2MSecurityObjectRepository, LWM2MServerObjectRepository lwm2MServerObjectRepository, TVChannelObjectRepository tvChannelObjectRepository, TVControlObjectRepository tvControlObjectRepository) {
+        this.accessControlObjectRepository = accessControlObjectRepository;
+        this.deviceObjectRepository = deviceObjectRepository;
+        this.lwm2MSecurityObjectRepository = lwm2MSecurityObjectRepository;
+        this.lwm2MServerObjectRepository = lwm2MServerObjectRepository;
+        this.tvChannelObjectRepository = tvChannelObjectRepository;
+        this.tvControlObjectRepository = tvControlObjectRepository;
     }
 
     public void show() {
@@ -29,9 +34,28 @@ public class ShowStatus {
         System.out.printf("%-50s\n",status);
         System.out.println(stars);
 
-        System.out.println(securityObject);
-        System.out.println(serverObject);
-        System.out.println(device);
-        System.out.println(controlObject);
+        for(LWM2MSecurityObject securityObject: lwm2MSecurityObjectRepository.findAll()) {
+            System.out.println(securityObject);
+        }
+
+        for(LWM2MServerObject serverObject: lwm2MServerObjectRepository.findAll()){
+            System.out.println(serverObject);
+        }
+
+        for(DeviceObject device: deviceObjectRepository.findAll()){
+            System.out.println(device);
+        }
+
+        for(AccessControlObject controlObject: accessControlObjectRepository.findAll()){
+            System.out.println(controlObject);
+        }
+
+        for(TVControlObject tvControlObject: tvControlObjectRepository.findAll()){
+            System.out.println(tvControlObject);
+        }
+
+        for(TVChannelObject tvChannelObject: tvChannelObjectRepository.findAll()){
+            System.out.println(tvChannelObject);
+        }
     }
 }

@@ -71,8 +71,8 @@ public class RefrigeratorApplication {
                         reportToServer.sendOneReport();
                         break;
                     case "5":
-                        ShowStatus showStatus = new ShowStatus(securityObject, serverObject, device, controlObject);
-                        showStatus.show();
+                        //ShowStatus showStatus = new ShowStatus();
+                        //showStatus.show();
                         break;
 
                     default:

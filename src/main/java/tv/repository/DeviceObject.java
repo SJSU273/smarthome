@@ -6,6 +6,7 @@ import java.sql.Time;
  * Created by Scott on 6/26/15.
  */
 public class DeviceObject {
+    private String id;
     private String Manufacturer;
     private String ModelNumber;
     private String SerialNumber;

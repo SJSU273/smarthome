@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import LWM2MServer.services.DataHouse2;
 import LWM2MServer.models.InfoReport;
-import tv.model.RegisterDelete;
 import tv.model.RegisterRequest;
 import tv.model.RegisterUpdate;
 
@@ -20,7 +18,6 @@ import java.util.LinkedList;
 @RestController
 public class LWM2MController {
 
-    DataHouse2 dataHouse = new DataHouse2();
     @Autowired
     IoTClientRepository ioTClientRepository;
 
@@ -103,8 +100,7 @@ public class LWM2MController {
      //   if (r == null) return new LinkedList<InfoReport>(new InfoReport(0, "There is no any data in your request!"));
 
         //save to database
-        dataHouse.storeData(r);
-        return dataHouse.retrieveData(r.getId());
+        return new LinkedList<InfoReport>();
 
      }
 }
