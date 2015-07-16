@@ -6,7 +6,12 @@ import java.sql.Time;
  * Created by Scott on 7/15/15.
  */
 public class TVChannelObject {
-    private String id;
+    private String id; //Used by MongoDB
+
+    private final int thisObjectID = 10; // device = 10
+    private int thisObjectInstanceID; // Multiple = 0...n
+
+
     private int channelID;
     private String channelName;
     private Time startTime;
@@ -59,6 +64,8 @@ public class TVChannelObject {
     public String toString() {
         return "TVChannelObject{" +
                 "id='" + id + '\'' +
+                ", thisObjectID=" + thisObjectID +
+                ", thisObjectInstanceID=" + thisObjectInstanceID +
                 ", channelID=" + channelID +
                 ", channelName='" + channelName + '\'' +
                 ", startTime=" + startTime +

@@ -4,7 +4,10 @@ package tv.repository;
  * Created by Scott on 6/26/15.
  */
 public class AccessControlObject {
-    private String id;
+    private String id; //Used by MongoDB
+
+    private final int thisObjectID = 2; // device = 2
+    private int thisObjectInstanceID; // Multiple = 0...n
 
     private int ObjectID;
     private int ObjectInstanceID;
@@ -55,8 +58,11 @@ public class AccessControlObject {
 
     @Override
     public String toString() {
-        return "AccessControlObject: {" +
-                "ObjectID=" + ObjectID +
+        return "AccessControlObject{" +
+                "id='" + id + '\'' +
+                ", thisObjectID=" + thisObjectID +
+                ", thisObjectInstanceID=" + thisObjectInstanceID +
+                ", ObjectID=" + ObjectID +
                 ", ObjectInstanceID=" + ObjectInstanceID +
                 ", ACL=" + ACL +
                 ", AccessControlOwner=" + AccessControlOwner +

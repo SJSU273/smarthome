@@ -8,7 +8,12 @@ import org.springframework.stereotype.Service;
  */
 
 public class LWM2MSecurityObject {
-    private String id;
+    private String id; //Used by MongoDB
+
+    private final int thisObjectID = 0; // device = 0
+    private int thisObjectInstanceID; // Multiple = 0...n
+
+
     private String LWM2MServerURI;
     private boolean BootstrapServer;
     private int SecurityMode;
@@ -90,6 +95,8 @@ public class LWM2MSecurityObject {
     public String toString() {
         return "LWM2MSecurityObject{" +
                 "id='" + id + '\'' +
+                ", thisObjectID=" + thisObjectID +
+                ", thisObjectInstanceID=" + thisObjectInstanceID +
                 ", LWM2MServerURI='" + LWM2MServerURI + '\'' +
                 ", BootstrapServer=" + BootstrapServer +
                 ", SecurityMode=" + SecurityMode +

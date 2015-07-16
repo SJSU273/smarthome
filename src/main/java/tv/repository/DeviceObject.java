@@ -6,7 +6,11 @@ import java.sql.Time;
  * Created by Scott on 6/26/15.
  */
 public class DeviceObject {
-    private String id;
+    private String id; //Used by MongoDB
+
+    private final int thisObjectID = 3; // device = 3
+    private final int thisObjectInstanceID = 0; // Single = 0
+
     private String Manufacturer;
     private String ModelNumber;
     private String SerialNumber;
@@ -146,8 +150,11 @@ public class DeviceObject {
 
     @Override
     public String toString() {
-        return "DeviceObject: {" +
-                "Manufacturer='" + Manufacturer + '\'' +
+        return "DeviceObject{" +
+                "id='" + id + '\'' +
+                ", thisObjectID=" + thisObjectID +
+                ", thisObjectInstanceID=" + thisObjectInstanceID +
+                ", Manufacturer='" + Manufacturer + '\'' +
                 ", ModelNumber='" + ModelNumber + '\'' +
                 ", SerialNumber='" + SerialNumber + '\'' +
                 ", FirmwareVersion='" + FirmwareVersion + '\'' +

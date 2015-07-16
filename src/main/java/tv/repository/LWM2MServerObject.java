@@ -4,7 +4,12 @@ package tv.repository;
  * Created by Scott on 6/26/15.
  */
 public class LWM2MServerObject {
-    private String id;
+
+    private String id; //Used by MongoDB
+
+    private final int thisObjectID = 1; // device = 1
+    private int thisObjectInstanceID; // Multiple = 0...n
+
     private int ShortServerID;
     private int Lifetime;
     private int DefaultMinimumPeriod;
@@ -84,8 +89,11 @@ public class LWM2MServerObject {
 
     @Override
     public String toString() {
-        return "LWM2MServerObject: {" +
-                "ShortServerID=" + ShortServerID +
+        return "LWM2MServerObject{" +
+                "id='" + id + '\'' +
+                ", thisObjectID=" + thisObjectID +
+                ", thisObjectInstanceID=" + thisObjectInstanceID +
+                ", ShortServerID=" + ShortServerID +
                 ", Lifetime=" + Lifetime +
                 ", DefaultMinimumPeriod=" + DefaultMinimumPeriod +
                 ", DefaultMaximumPeriod=" + DefaultMaximumPeriod +

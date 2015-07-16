@@ -94,7 +94,7 @@ public class LWM2MController {
 
     }
 
-    @RequestMapping("/report")
+    @RequestMapping(value="/notify", method= RequestMethod.DELETE)
     public LinkedList<InfoReport> report(@RequestBody InfoReport r) {
 
      //   if (r == null) return new LinkedList<InfoReport>(new InfoReport(0, "There is no any data in your request!"));
