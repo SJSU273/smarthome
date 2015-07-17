@@ -1,5 +1,6 @@
 package tv.repository;
 
+import java.util.Date;
 import java.sql.Time;
 
 /**
@@ -14,8 +15,8 @@ public class TVChannelObject {
 
     private int channelID;
     private String channelName;
-    private Time startTime;
-    private Time endTime;
+    private Date startTime;
+    private Date endTime;
 
     public TVChannelObject() {
     }
@@ -26,6 +27,18 @@ public class TVChannelObject {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public int getThisObjectID() {
+        return thisObjectID;
+    }
+
+    public int getThisObjectInstanceID() {
+        return thisObjectInstanceID;
+    }
+
+    public void setThisObjectInstanceID(int thisObjectInstanceID) {
+        this.thisObjectInstanceID = thisObjectInstanceID;
     }
 
     public int getChannelID() {
@@ -44,19 +57,19 @@ public class TVChannelObject {
         this.channelName = channelName;
     }
 
-    public Time getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Time startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public Time getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Time endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 

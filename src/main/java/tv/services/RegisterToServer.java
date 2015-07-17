@@ -5,6 +5,7 @@ import tv.model.*;
 import tv.repository.DeviceObject;
 import tv.repository.LWM2MSecurityObject;
 import tv.repository.LWM2MServerObject;
+import tv.repository.TVControlObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,7 +45,7 @@ public class RegisterToServer {
         RegisterRequest request = new RegisterRequest();
         request.setEndpointClientName(EPN);
         request.setSMSNumber("40812345678");
-        request.setObjectsAndObjectInstances("</1/101>, </2/0>, </3/0>, </4/0>, </5>");
+        request.setObjectsAndObjectInstances("</0/0>, </1>, </2/0>, </3/0>, </10>, </11>");
         request.setLWM2MVersion(deviceObject.getFirmwareVersion());
         request.setBindingMode(serverObject.getBindingPreference());
         request.setLifetime(serverObject.getLifetime());
@@ -58,6 +59,9 @@ public class RegisterToServer {
 
         System.out.println("Receiving the response: 200 (OK)");
         System.out.println("Register successfully.");
+
+        //Create a TVControlObject after successful registration
+        TVControlObject tvControlObject = new TVControlObject();
         return;
 
 

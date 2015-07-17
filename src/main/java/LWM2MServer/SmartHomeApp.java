@@ -1,7 +1,9 @@
 package LWM2MServer;
 
+import Common.TVObjectID;
 import LWM2MServer.repository.IoTClientRepository;
-import LWM2MServer.services.ObserveRequest;
+import LWM2MServer.services.ObjectOperation;
+import LWM2MServer.services.ObserveOperation;
 import LWM2MServer.services.PrintMenu;
 import LWM2MServer.services.ShowRegisteredDevices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,7 @@ public class SmartHomeApp implements CommandLineRunner {
 
     @Override
     public void run(String...args) {
+
 
         ioTClientRepository.deleteAll();
 
@@ -73,16 +76,20 @@ public class SmartHomeApp implements CommandLineRunner {
                         break;
 
                     case "2.6":
-                        System.out.println("Create: T.B.D\n\n");
+                        // To simplify with using the static Uri for a TV
+                        ObjectOperation objectOperation1 = new ObjectOperation("http://localhost:8082/object", TVObjectID.TV_CHANNEL_OBJECT_ID , 0);
+                        objectOperation1.create();
                         break;
 
                     case "2.7":
-                        System.out.println("Delete: T.B.D\n\n");
+                        // To simplify with using the static Uri for a TV
+                        ObjectOperation objectOperation2 = new ObjectOperation("http://localhost:8082/object", TVObjectID.TV_CHANNEL_OBJECT_ID, 0);
+                        objectOperation2.delete();
                         break;
 
                     case "3":
                     case "3.1":
-                        ObserveRequest observeRequest = new ObserveRequest();
+                        ObserveOperation observeRequest = new ObserveOperation();
                         observeRequest.observe();
                         System.out.println("Observe: T.B.D\n\n");
                         break;

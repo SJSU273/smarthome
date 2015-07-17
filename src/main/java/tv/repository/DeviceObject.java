@@ -44,6 +44,22 @@ public class DeviceObject {
         SupportedBindingAndModes = supportedBindingAndModes;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getThisObjectID() {
+        return thisObjectID;
+    }
+
+    public int getThisObjectInstanceID() {
+        return thisObjectInstanceID;
+    }
+
     public String getManufacturer() {
         return Manufacturer;
     }

@@ -42,12 +42,12 @@ public class ShowStatus {
             System.out.println(serverObject);
         }
 
-        for(DeviceObject device: deviceObjectRepository.findAll()){
-            System.out.println(device);
-        }
-
         for(AccessControlObject controlObject: accessControlObjectRepository.findAll()){
             System.out.println(controlObject);
+        }
+
+        for(DeviceObject device: deviceObjectRepository.findAll()){
+            System.out.println(device);
         }
 
         for(TVControlObject tvControlObject: tvControlObjectRepository.findAll()){

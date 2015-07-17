@@ -6,7 +6,7 @@ import tv.model.BootstrapResponse;
 /**
  * Created by Scott on 7/16/15.
  */
-public class ObserveRequest {
+public class ObserveOperation {
     String url = "http://localhost:8082/observe";
 
     int objectId = 1;

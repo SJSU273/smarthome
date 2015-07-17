@@ -1,10 +1,15 @@
 package tv.controllers;
 
+import Common.TVObjectID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tv.repository.*;
+
+
+import java.util.Date;
+
 
 /**
  * Created by Scott on 7/15/15.
@@ -112,6 +117,24 @@ public class TVController {
                 + " objectId = "+ objectId
                 + " objectInstanceId = " + objectInstanceId);
 
+        switch (TVObjectID.fromInt(objectId)) {
+            case TV_CHANNEL_OBJECT_ID:
+
+                TVChannelObject tvChannelObject = new TVChannelObject();
+                tvChannelObject.setChannelID(1);
+                tvChannelObject.setChannelName("BBC");
+                tvChannelObject.setStartTime(new Date());
+
+                tvChannelObjectRepository.save(tvChannelObject);
+
+                break;
+            default:
+                System.out.println("Send Message: 20X (NOT FOUND)");
+
+                return new ResponseEntity(HttpStatus.NOT_FOUND);
+
+        }
+
         System.out.println("Send Message: 200 (OK)");
 
         return new ResponseEntity(HttpStatus.OK);
@@ -126,10 +149,24 @@ public class TVController {
                 + " objectId = "+ objectId
                 + " objectInstanceId = " + objectInstanceId);
 
+        switch (TVObjectID.fromInt(objectId)) {
+            case TV_CHANNEL_OBJECT_ID:
+                for (TVChannelObject object: tvChannelObjectRepository.findAll()) {
+                    if (object.getThisObjectInstanceID() == objectInstanceId) {
+                        tvChannelObjectRepository.delete(object);
+                    }
+                }
+                break;
+            default:
+                System.out.println("Send Message: 20X (NOT FOUND)");
+
+                return new ResponseEntity(HttpStatus.NOT_FOUND);
+
+        }
+
         System.out.println("Send Message: 200 (OK)");
 
         return new ResponseEntity(HttpStatus.OK);
-
     }
 
     //observe by Hongbo Tian

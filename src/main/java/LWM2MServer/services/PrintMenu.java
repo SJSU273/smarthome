@@ -22,7 +22,7 @@ public class PrintMenu {
         System.out.printf("|%-48s|\n", "    2.4: Write Attributes");
         System.out.printf("|%-48s|\n", "    2.5: Execute");
         System.out.printf("|%-48s|\n", "    2.6: Create");
-        System.out.printf("|%-48s|\n", "    2.6: Delete");
+        System.out.printf("|%-48s|\n", "    2.7: Delete");
         System.out.printf("|%-48s|\n", " 3: Information Reporting");
         System.out.printf("|%-48s|\n", "    3.1: Observe");
         System.out.printf("|%-48s|\n", "    3.2: Notify");
