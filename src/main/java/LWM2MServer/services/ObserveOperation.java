@@ -1,5 +1,6 @@
 package LWM2MServer.services;
 
+import Common.TVObjectID;
 import org.springframework.web.client.RestTemplate;
 import tv.model.BootstrapResponse;
 
@@ -9,8 +10,8 @@ import tv.model.BootstrapResponse;
 public class ObserveOperation {
     String url = "http://localhost:8082/observe";
 
-    int objectId = 1;
-    int objectInstanceId = 2;
+    int objectId = TVObjectID.TV_CHANNEL_OBJECT_ID.getValue();
+    int objectInstanceId = 0;
     int resourceId = 3;
 
 
@@ -25,10 +26,6 @@ public class ObserveOperation {
 
         System.out.println("Receiving the response: " + response);
 
-        if (response == null) {
-            System.out.println("Bootstrap failed.");
-            return;
-        }
-
+        return;
     }
 }

@@ -21,10 +21,11 @@ public class PrintMenu {
         System.out.printf("|%-48s|\n", " 4: Information Report");
         System.out.printf("|%-48s|\n", "    4.1: Notify");
         System.out.printf("|%-48s|\n", " 5: Tool");
-        System.out.printf("|%-48s|\n", "    5.1: Show Objects");
-        System.out.printf("|%-48s|\n", "    5.2: Change Channel(up)");
-        System.out.printf("|%-48s|\n", "    5.3: Change Channel(down)");
-        System.out.printf("|%-48s|\n", "    5.4: Unlock TV");
+        System.out.printf("|%-48s|\n", "    5.1: Change Channel(up)");
+        System.out.printf("|%-48s|\n", "    5.2: Change Channel(down)");
+        System.out.printf("|%-48s|\n", "    5.3: Unlock TV");
+        System.out.printf("|%-48s|\n", "    5.4: Show Objects");
+        System.out.printf("|%-48s|\n", "    5.5: Show Data");
         System.out.println(stars);
         System.out.println("Please input here:");
     }

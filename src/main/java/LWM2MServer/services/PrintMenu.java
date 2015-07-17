@@ -23,8 +23,8 @@ public class PrintMenu {
         System.out.printf("|%-48s|\n", "    2.7: Delete");
         System.out.printf("|%-48s|\n", " 3: Information Reporting");
         System.out.printf("|%-48s|\n", "    3.1: Observe");
-        System.out.printf("|%-48s|\n", "    3.2: Notify");
-        System.out.printf("|%-48s|\n", "    3.3: Cancel Observation");
+        System.out.printf("|%-48s|\n", "    3.2: Cancel Observation by response");
+        System.out.printf("|%-48s|\n", "    3.3: Cancel Observation by WriteAttributes ");
         System.out.printf("|%-48s|\n", " 4: Tools");
         System.out.printf("|%-48s|\n", "    4.1: Delete Registered Devices");
         System.out.printf("|%-48s|\n", "    4.2: Show Registered Devices");

@@ -2,6 +2,7 @@ package tv.services;
 
 import org.springframework.web.client.RestTemplate;
 import LWM2MServer.models.InfoReport;
+import tv.controllers.TVController;
 import tv.repository.*;
 
 import java.time.LocalDateTime;
@@ -19,15 +20,17 @@ public class ReportToServer {
     private TVChannelObjectRepository tvChannelObjectRepository;
     private TVControlObjectRepository tvControlObjectRepository;
     private DeviceObjectRepository deviceObjectRepository;
+    private ClientTvWatchRecordRepository clientTvWatchRecordRepository;
 
     public ReportToServer() {
     }
 
-    public ReportToServer(TVAttributeObjectRepository tvAttributeObjectRepository, TVChannelObjectRepository tvChannelObjectRepository, TVControlObjectRepository tvControlObjectRepository, DeviceObjectRepository deviceObjectRepository) {
+    public ReportToServer(TVAttributeObjectRepository tvAttributeObjectRepository, TVChannelObjectRepository tvChannelObjectRepository, TVControlObjectRepository tvControlObjectRepository, DeviceObjectRepository deviceObjectRepository, ClientTvWatchRecordRepository clientTvWatchRecordRepository) {
         this.tvAttributeObjectRepository = tvAttributeObjectRepository;
         this.tvChannelObjectRepository = tvChannelObjectRepository;
         this.tvControlObjectRepository = tvControlObjectRepository;
         this.deviceObjectRepository = deviceObjectRepository;
+        this.clientTvWatchRecordRepository = clientTvWatchRecordRepository;
     }
 
     public void notifyTvChannelObject(String uri) {
@@ -35,6 +38,10 @@ public class ReportToServer {
         String Manufacturer = null;
         String ModelNumber = null;
         String SerialNumber = null;
+
+        if (!TVController.isObserved()) {
+            return;
+        }
 
         RestTemplate restTemplate = new RestTemplate();
         for (TVChannelObject object: tvChannelObjectRepository.findAll()) {
@@ -67,6 +74,30 @@ public class ReportToServer {
             String result = restTemplate.postForObject(uri, tvChannelObject, String.class, paras);
 
             System.out.println("Receive response message with result: " + result);
+
+            //Check whether server wants to cancel observation
+            if ("stop".equals(result)) {
+                TVController.setObserved(false);
+                System.out.println("Observation is canceled by server, and no more data will be sent to server.");
+            }
+
+            //Save to local database
+            ClientTvWatchRecord record = new ClientTvWatchRecord();
+            record.setStartTime(tvChannelObject.getStartTime());
+            record.setThisObjectInstanceID(tvChannelObject.getThisObjectInstanceID());
+            record.setThisObjectID(tvChannelObject.getThisObjectID());
+            record.setChannelName(tvChannelObject.getChannelName());
+            record.setEndTime(tvChannelObject.getEndTime());
+            clientTvWatchRecordRepository.save(record);
+
+            //update TV Channel object
+            for (TVControlObject controlObject: tvControlObjectRepository.findAll()) {
+                tvChannelObject.setChannelID(controlObject.getChannelId());
+                tvChannelObject.setChannelName("BBC-" + tvChannelObject.getChannelID());
+            }
+            tvChannelObject.setStartTime(tvChannelObject.getEndTime());
+            tvChannelObject.setEndTime(null);
+            tvChannelObjectRepository.save(tvChannelObject);
 
         }
     }

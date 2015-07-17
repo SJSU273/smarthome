@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tv.repository.*;
+import tv.services.ReportToServer;
 
 
 import java.util.Date;
@@ -19,6 +20,9 @@ import java.util.List;
  */
 @RestController
 public class TVController {
+
+    private static boolean observed = false; //true: observed, false: not observed
+
     @Autowired
     private AccessControlObjectRepository accessControlObjectRepository;
 
@@ -39,6 +43,17 @@ public class TVController {
 
     @Autowired
     private TVAttributeObjectRepository tvAttributeObjectRepository;
+
+    @Autowired
+    private ClientTvWatchRecordRepository clientTvWatchRecordRepository;
+
+    public static boolean isObserved() {
+        return observed;
+    }
+
+    public static void setObserved(boolean observed) {
+        TVController.observed = observed;
+    }
 
     //read by Xiaoxiao Li
     @RequestMapping(value="/value/{objectId}/{objectInstanceId}/{resourceId}", method= RequestMethod.GET)
@@ -75,10 +90,20 @@ public class TVController {
 
         for (TVControlObject object: tvControlObjectRepository.findAll()) {
             if (object.getThisObjectID() == objectId && object.getThisObjectInstanceID() == objectInstanceId) {
-                object.setChannelId(channelId.getChannelId());
-                System.out.println("Find the record in database");
-                tvControlObjectRepository.save(object);
-                break;
+                if (object.getChannelId() != channelId.getChannelId()) {
+                    // If different channel id is received, it needs to save to local database and notify server.
+
+                    // save to local database
+                    object.setChannelId(channelId.getChannelId());
+                    System.out.println("Find the record in database");
+                    tvControlObjectRepository.save(object);
+
+                    // Notify server
+                    ReportToServer reportToServer53 = new ReportToServer(tvAttributeObjectRepository, tvChannelObjectRepository, tvControlObjectRepository, deviceObjectRepository, clientTvWatchRecordRepository);
+                    reportToServer53.notifyTvChannelObject("http://localhost:8081/notify/tv/channel");
+
+                }
+                     break;
             }
         }
 
@@ -145,7 +170,14 @@ public class TVController {
 
         attributeObject.getAttribute().setSt(attribute.getSt());
 
+
+        // save to database
         tvAttributeObjectRepository.save(attributeObject);
+
+        // set observation flag in TVController
+        if("stop".equals(attribute.getCancel())){
+            TVController.setObserved(false);
+        }
 
         System.out.println("Send Message: 200 (OK)");
 
@@ -188,9 +220,18 @@ public class TVController {
             case TV_CHANNEL_OBJECT_ID:
 
                 TVChannelObject tvChannelObject = new TVChannelObject();
+                //default value
                 tvChannelObject.setChannelID(1);
-                tvChannelObject.setChannelName("BBC");
+                tvChannelObject.setChannelName("BBC-1");
                 tvChannelObject.setStartTime(new Date());
+
+
+                //try to get current channel id from TV Control Object
+                for (TVControlObject controlObject: tvControlObjectRepository.findAll()){
+                    tvChannelObject.setChannelID(controlObject.getChannelId());
+                    tvChannelObject.setChannelName("BBC-"+tvChannelObject.getChannelID());
+                }
+
 
                 tvChannelObjectRepository.save(tvChannelObject);
 
@@ -246,6 +287,10 @@ public class TVController {
                 + " resourceId" + resourceId);
 
         System.out.println("Replied Message: 200 (OK)");
+
+        System.out.println("Object is set to be observed: /" + objectId + "/" + objectInstanceId + "/" + resourceId );
+
+        this.observed = true;
 
         return new ResponseEntity(HttpStatus.OK);
 

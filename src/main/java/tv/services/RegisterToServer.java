@@ -71,12 +71,11 @@ public class RegisterToServer {
 
         //Create a TVControlObject after successful registration
         TVControlObject tvControlObject = new TVControlObject();
-        tvControlObject.setChannelId(10);
+        tvControlObject.setChannelId(1);
         tvControlObject.setVolumeOfVoice(5);
         tvControlObjectRepository.save(tvControlObject);
 
         return;
-
 
     }
 

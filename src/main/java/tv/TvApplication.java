@@ -85,8 +85,8 @@ public class TvApplication implements CommandLineRunner{
                 BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
                 String s = bufferRead.readLine();
 
-                if(lock == 1 && !s.equals("5.4")) {
-                    System.out.println("TV is locked. No command is accepted until it is unlock.");
+                if(lock == 1 && !"5.3".equals(s)) {
+                    System.out.println("TV is locked. Please use '5.3' command to unlock.");
                     System.out.println(s);
                     continue;
                 }
@@ -115,47 +115,62 @@ public class TvApplication implements CommandLineRunner{
                         break;
                     case "4":
                     case "4.1":
-                        ReportToServer reportToServer = new ReportToServer(tvAttributeObjectRepository, tvChannelObjectRepository, tvControlObjectRepository, deviceObjectRepository);
+                        ReportToServer reportToServer = new ReportToServer(tvAttributeObjectRepository, tvChannelObjectRepository, tvControlObjectRepository, deviceObjectRepository, clientTvWatchRecordRepository);
                         reportToServer.notifyTvChannelObject("http://localhost:8081/notify/tv/channel");
                         break;
 
                     case "5":
-                    case "5.1":
-                        ShowData showStatus = new ShowData(accessControlObjectRepository, deviceObjectRepository, lwm2MSecurityObjectRepository,lwm2MServerObjectRepository, tvChannelObjectRepository, tvControlObjectRepository, tvAttributeObjectRepository);
-                        showStatus.show();
-                        break;
 
-                    case "5.2":
+                    case "5.1":
                         // change the TV Channel up
                         List<TVControlObject> l = tvControlObjectRepository.findAll();
                         if (!l.isEmpty()) {
                             TVControlObject tvControlObject = l.get(0);
                             tvControlObject.setChannelId((tvControlObject.getChannelId()+1) % 500);
                             tvControlObjectRepository.save(tvControlObject);
+
+                            ReportToServer reportToServer52 = new ReportToServer(tvAttributeObjectRepository, tvChannelObjectRepository, tvControlObjectRepository, deviceObjectRepository, clientTvWatchRecordRepository);
+                            reportToServer52.notifyTvChannelObject("http://localhost:8081/notify/tv/channel");
+
                         } else {
                             System.out.println("Error: Can't find TV Control Object. Please check if TV has registered already.");
                         }
                         break;
 
-                    case "5.3":
+                    case "5.2":
                         // change the TV Channel down
                         l = tvControlObjectRepository.findAll();
                         if (!l.isEmpty()) {
                             TVControlObject tvControlObject = l.get(0);
                             tvControlObject.setChannelId((tvControlObject.getChannelId() + 500 - 1) % 500);
                             tvControlObjectRepository.save(tvControlObject);
+                            ReportToServer reportToServer53 = new ReportToServer(tvAttributeObjectRepository, tvChannelObjectRepository, tvControlObjectRepository, deviceObjectRepository, clientTvWatchRecordRepository);
+                            reportToServer53.notifyTvChannelObject("http://localhost:8081/notify/tv/channel");
+
                         } else {
                             System.out.println("Error: Can't find TV Control Object. Please check if TV has registered already.");
                         }
                         break;
 
-                    case "5.4":
+                    case "5.3":
                         // unlock TV
                         for (TVControlObject o: tvControlObjectRepository.findAll()) {
                             o.setLock(0);
                             tvControlObjectRepository.save(o);
                         }
                         System.out.println("TV is unlocked.");
+                        break;
+
+                    case "5.4":
+                        ShowData showStatus = new ShowData(accessControlObjectRepository, deviceObjectRepository, lwm2MSecurityObjectRepository,lwm2MServerObjectRepository, tvChannelObjectRepository, tvControlObjectRepository, tvAttributeObjectRepository);
+                        showStatus.show();
+                        break;
+
+                    case "5.5":
+                        // Show Data
+                        for (ClientTvWatchRecord record: clientTvWatchRecordRepository.findAll()) {
+                            System.out.println(record);
+                        }
                         break;
 
                     default:

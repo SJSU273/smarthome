@@ -21,11 +21,21 @@ import java.util.LinkedList;
 @RestController
 public class LWM2MController {
 
+    private static boolean cancelObserve = false; //true: cancel, false: not cancel
+
     @Autowired
     private IoTClientRepository ioTClientRepository;
 
     @Autowired
     private ServerTvWatchRecordRepository serverTvWatchRecordRepository;
+
+    public static boolean isCancelObserve() {
+        return cancelObserve;
+    }
+
+    public static void setCancelObserve(boolean cancelObserve) {
+        LWM2MController.cancelObserve = cancelObserve;
+    }
 
     @RequestMapping(value="/register/tv", method= RequestMethod.PUT)
     private void registerTV(@RequestBody RegisterRequest request) {
@@ -118,6 +128,11 @@ public class LWM2MController {
         System.out.println(record);
 
         serverTvWatchRecordRepository.save(record);
+
+        if(this.cancelObserve) {
+            //sent "stop" to cancel observation
+            return "stop";
+        }
 
         return null;
 

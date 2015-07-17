@@ -1,6 +1,7 @@
 package LWM2MServer;
 
 import Common.TVObjectID;
+import LWM2MServer.controllers.LWM2MController;
 import LWM2MServer.models.ServerTvWatchRecord;
 import LWM2MServer.repository.IoTClientRepository;
 import LWM2MServer.repository.ServerTvWatchRecordRepository;
@@ -69,7 +70,7 @@ public class SmartHomeApp implements CommandLineRunner {
 
                     case "2.4":
                         AttributeOperation req2 = new AttributeOperation("http://localhost:8082/attribute", TVObjectID.TV_CHANNEL_OBJECT_ID , 0, 4);
-                        req2.writeAttribute();
+                        req2.writeAttribute(1);
                         break;
 
                     case "2.5":
@@ -93,15 +94,19 @@ public class SmartHomeApp implements CommandLineRunner {
                     case "3.1":
                         ObserveOperation observeRequest = new ObserveOperation();
                         observeRequest.observe();
-                        System.out.println("Observe: T.B.D\n\n");
+                        LWM2MController.setCancelObserve(false);
+                        System.out.println("Observation is set, and client is going to notify its data.");
                         break;
 
                     case "3.2":
-                        System.out.println("Notify: T.B.D\n\n");
+                        LWM2MController.setCancelObserve(true);
+                        System.out.println("Observation is canceled, and will inform client in the coming notify message.");
                         break;
 
                     case "3.3":
-                        System.out.println("Cancel Observation: T.B.D\n\n");
+                        AttributeOperation req33 = new AttributeOperation("http://localhost:8082/attribute", TVObjectID.TV_CHANNEL_OBJECT_ID , 0, 4);
+                        req33.writeAttribute("stop");
+
                         break;
 
                     case "4":

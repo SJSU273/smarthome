@@ -2,23 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b101490-7246-47d4-b14b-bc95217d5b51" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/tv/repository/ClientTvWatchRecord.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/tv/repository/ClientTvWatchRecordRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/LWM2MServer/models/ServerTvWatchRecord.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/LWM2MServer/repository/ServerTvWatchRecordRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/LWM2MServer/controllers/LWM2MController.class" afterPath="$PROJECT_DIR$/build/classes/main/LWM2MServer/controllers/LWM2MController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/tv/services/PrintMenu.class" afterPath="$PROJECT_DIR$/build/classes/main/tv/services/PrintMenu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/Refrigerator/RefrigeratorApplication.class" afterPath="$PROJECT_DIR$/build/classes/main/Refrigerator/RefrigeratorApplication.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/tv/services/ReportToServer.class" afterPath="$PROJECT_DIR$/build/classes/main/tv/services/ReportToServer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/tv/TvApplication.class" afterPath="$PROJECT_DIR$/build/classes/main/tv/TvApplication.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/LWM2MServer/services/AttributeOperation.java" afterPath="$PROJECT_DIR$/src/main/java/LWM2MServer/services/AttributeOperation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/LWM2MServer/controllers/LWM2MController.java" afterPath="$PROJECT_DIR$/src/main/java/LWM2MServer/controllers/LWM2MController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/LWM2MServer/services/ObserveOperation.java" afterPath="$PROJECT_DIR$/src/main/java/LWM2MServer/services/ObserveOperation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/LWM2MServer/services/PrintMenu.java" afterPath="$PROJECT_DIR$/src/main/java/LWM2MServer/services/PrintMenu.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tv/services/PrintMenu.java" afterPath="$PROJECT_DIR$/src/main/java/tv/services/PrintMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Refrigerator/RefrigeratorApplication.java" afterPath="$PROJECT_DIR$/src/main/java/Refrigerator/RefrigeratorApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tv/services/RegisterToServer.java" afterPath="$PROJECT_DIR$/src/main/java/tv/services/RegisterToServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tv/services/ReportToServer.java" afterPath="$PROJECT_DIR$/src/main/java/tv/services/ReportToServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/LWM2MServer/SmartHomeApp.java" afterPath="$PROJECT_DIR$/src/main/java/LWM2MServer/SmartHomeApp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tv/controllers/TVController.java" afterPath="$PROJECT_DIR$/src/main/java/tv/controllers/TVController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tv/TvApplication.java" afterPath="$PROJECT_DIR$/src/main/java/tv/TvApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="smarthome.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -56,101 +49,43 @@
       <file leaf-file-name="TvApplication.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/tv/TvApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.175676">
-              <caret line="37" column="14" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServerTvWatchRecord.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/models/ServerTvWatchRecord.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding>
-                <element signature="e#963#964#0" expanded="true" />
-                <element signature="e#988#989#0" expanded="true" />
-                <element signature="e#1024#1025#0" expanded="true" />
-                <element signature="e#1052#1053#0" expanded="true" />
-                <element signature="e#1105#1106#0" expanded="true" />
-                <element signature="e#1153#1154#0" expanded="true" />
-                <element signature="e#1189#1190#0" expanded="true" />
-                <element signature="e#1224#1225#0" expanded="true" />
-                <element signature="e#1268#1269#0" expanded="true" />
-                <element signature="e#1311#1312#0" expanded="true" />
-                <element signature="e#1380#1381#0" expanded="true" />
-                <element signature="e#1444#1445#0" expanded="true" />
-                <element signature="e#1477#1478#0" expanded="true" />
-                <element signature="e#1509#1510#0" expanded="true" />
-                <element signature="e#1556#1557#0" expanded="true" />
-                <element signature="e#1598#1599#0" expanded="true" />
-                <element signature="e#1636#1637#0" expanded="true" />
-                <element signature="e#1670#1671#0" expanded="true" />
-                <element signature="e#1724#1725#0" expanded="true" />
-                <element signature="e#1770#1771#0" expanded="true" />
-                <element signature="e#1804#1805#0" expanded="true" />
-                <element signature="e#1836#1837#0" expanded="true" />
-                <element signature="e#1884#1885#0" expanded="true" />
-                <element signature="e#1926#1927#0" expanded="true" />
-                <element signature="e#1958#1959#0" expanded="true" />
-                <element signature="e#1988#1989#0" expanded="true" />
-                <element signature="e#2032#2033#0" expanded="true" />
-                <element signature="e#2070#2071#0" expanded="true" />
-                <element signature="e#2100#2101#0" expanded="true" />
-                <element signature="e#2126#2127#0" expanded="true" />
-                <element signature="e#2164#2165#0" expanded="true" />
-                <element signature="e#2194#2195#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegisterToServer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/tv/services/RegisterToServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="150" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LWM2MController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/controllers/LWM2MController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ShowRegisteredDevices.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/services/ShowRegisteredDevices.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.5257985">
+              <caret line="90" column="29" selection-start-line="90" selection-start-column="29" selection-end-line="90" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="PrintMenu.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/services/PrintMenu.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/tv/services/PrintMenu.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="70" selection-start-line="30" selection-start-column="70" selection-end-line="30" selection-end-column="70" />
+              <caret line="27" column="58" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SmartHomeApp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/SmartHomeApp.java">
+      <file leaf-file-name="TVController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/tv/controllers/TVController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="120" column="55" selection-start-line="120" selection-start-column="55" selection-end-line="120" selection-end-column="55" />
+              <caret line="292" column="29" selection-start-line="292" selection-start-column="29" selection-end-line="292" selection-end-column="29" />
+              <folding>
+                <element signature="e#1304#1305#0" expanded="true" />
+                <element signature="e#1335#1336#0" expanded="true" />
+                <element signature="e#1391#1392#0" expanded="true" />
+                <element signature="e#1439#1440#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShowData.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/tv/services/ShowData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="63" column="50" selection-start-line="63" selection-start-column="50" selection-end-line="63" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -160,56 +95,62 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/tv/services/ReportToServer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="62" column="51" selection-start-line="62" selection-start-column="51" selection-end-line="62" selection-end-column="51" />
+              <caret line="80" column="111" selection-start-line="80" selection-start-column="111" selection-end-line="80" selection-end-column="111" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientTvWatchRecord.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/tv/repository/ClientTvWatchRecord.java">
+      <file leaf-file-name="PrintMenu.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/services/PrintMenu.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="90" column="18" selection-start-line="90" selection-start-column="18" selection-end-line="90" selection-end-column="18" />
+              <caret line="25" column="82" selection-start-line="25" selection-start-column="82" selection-end-line="25" selection-end-column="82" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LWM2MController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/controllers/LWM2MController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="131" column="32" selection-start-line="131" selection-start-column="32" selection-end-line="131" selection-end-column="32" />
               <folding>
-                <element signature="e#909#910#0" expanded="true" />
-                <element signature="e#934#935#0" expanded="true" />
-                <element signature="e#970#971#0" expanded="true" />
-                <element signature="e#998#999#0" expanded="true" />
-                <element signature="e#1034#1035#0" expanded="true" />
-                <element signature="e#1069#1070#0" expanded="true" />
-                <element signature="e#1122#1123#0" expanded="true" />
-                <element signature="e#1170#1171#0" expanded="true" />
-                <element signature="e#1214#1215#0" expanded="true" />
-                <element signature="e#1257#1258#0" expanded="true" />
-                <element signature="e#1326#1327#0" expanded="true" />
-                <element signature="e#1390#1391#0" expanded="true" />
-                <element signature="e#1423#1424#0" expanded="true" />
-                <element signature="e#1455#1456#0" expanded="true" />
-                <element signature="e#1502#1503#0" expanded="true" />
-                <element signature="e#1544#1545#0" expanded="true" />
-                <element signature="e#1582#1583#0" expanded="true" />
-                <element signature="e#1616#1617#0" expanded="true" />
-                <element signature="e#1670#1671#0" expanded="true" />
-                <element signature="e#1716#1717#0" expanded="true" />
-                <element signature="e#1750#1751#0" expanded="true" />
-                <element signature="e#1782#1783#0" expanded="true" />
-                <element signature="e#1830#1831#0" expanded="true" />
-                <element signature="e#1872#1873#0" expanded="true" />
-                <element signature="e#1904#1905#0" expanded="true" />
-                <element signature="e#1934#1935#0" expanded="true" />
-                <element signature="e#1978#1979#0" expanded="true" />
-                <element signature="e#2016#2017#0" expanded="true" />
+                <element signature="e#982#983#0" expanded="true" />
+                <element signature="e#1018#1019#0" expanded="true" />
+                <element signature="e#1084#1085#0" expanded="true" />
+                <element signature="e#1145#1146#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientTvWatchRecordRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/tv/repository/ClientTvWatchRecordRepository.java">
+      <file leaf-file-name="ObserveOperation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/services/ObserveOperation.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+              <caret line="28" column="15" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AttributeOperation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/services/AttributeOperation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SmartHomeApp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/SmartHomeApp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="97" column="102" selection-start-line="97" selection-start-column="102" selection-end-line="97" selection-end-column="102" />
               <folding />
             </state>
           </provider>
@@ -672,7 +613,6 @@
         <option value="$PROJECT_DIR$/src/main/java/tv/repository/TVChannelObjectRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/tv/repository/TVControlObjectRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/LWM2MServer/services/ObserveRequest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/LWM2MServer/services/ObserveOperation.java" />
         <option value="$PROJECT_DIR$/src/main/java/TVObjectID.java" />
         <option value="$PROJECT_DIR$/src/main/java/LWM2MServer/services/ObjectOperation.java" />
         <option value="$PROJECT_DIR$/src/main/java/Common/TVObjectID.java" />
@@ -683,7 +623,6 @@
         <option value="$PROJECT_DIR$/src/main/java/tv/repository/AccessControlObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/tv/services/ShowStatus.java" />
         <option value="$PROJECT_DIR$/src/main/java/tv/services/BootstrapToServer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/tv/services/RegisterToServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/tv/repository/TVAttributeObjectRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/Common/LWM2MAttribute.java" />
         <option value="$PROJECT_DIR$/src/main/java/tv/repository/TVAttributeObject.java" />
@@ -691,19 +630,21 @@
         <option value="$PROJECT_DIR$/src/main/java/tv/repository/TVControlObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/Common/TVChannelId.java" />
         <option value="$PROJECT_DIR$/src/main/java/LWM2MServer/services/ValueOperation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/LWM2MServer/services/AttributeOperation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/tv/controllers/TVController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/tv/services/PrintMenu.java" />
         <option value="$PROJECT_DIR$/src/main/java/Refrigerator/RefrigeratorApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/Common/TVChannelRecord.java" />
         <option value="$PROJECT_DIR$/src/main/java/LWM2MServer/repository/ServerTvWatchRecordRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/LWM2MServer/controllers/LWM2MController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/LWM2MServer/services/PrintMenu.java" />
-        <option value="$PROJECT_DIR$/src/main/java/LWM2MServer/SmartHomeApp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/tv/services/ReportToServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/LWM2MServer/models/ServerTvWatchRecord.java" />
         <option value="$PROJECT_DIR$/src/main/java/tv/repository/ClientTvWatchRecord.java" />
         <option value="$PROJECT_DIR$/src/main/java/tv/repository/ClientTvWatchRecordRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tv/services/RegisterToServer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tv/services/PrintMenu.java" />
+        <option value="$PROJECT_DIR$/src/main/java/LWM2MServer/services/AttributeOperation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tv/controllers/TVController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/LWM2MServer/services/ObserveOperation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/LWM2MServer/services/PrintMenu.java" />
+        <option value="$PROJECT_DIR$/src/main/java/LWM2MServer/controllers/LWM2MController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/LWM2MServer/SmartHomeApp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tv/services/ReportToServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/tv/TvApplication.java" />
       </list>
     </option>
@@ -1531,9 +1472,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.SmartHomeApp" />
-        <item index="1" class="java.lang.String" itemvalue="Application.TvApplication" />
-        <item index="2" class="java.lang.String" itemvalue="Application.SmartHomeBootstrapApp" />
+        <item index="0" class="java.lang.String" itemvalue="Application.TvApplication" />
+        <item index="1" class="java.lang.String" itemvalue="Application.SmartHomeBootstrapApp" />
+        <item index="2" class="java.lang.String" itemvalue="Application.SmartHomeApp" />
         <item index="3" class="java.lang.String" itemvalue="JUnit.LWM2MBootstrapServer in smarthome" />
         <item index="4" class="java.lang.String" itemvalue="Groovy.build" />
       </list>
@@ -1555,16 +1496,16 @@
       <workItem from="1437002989029" duration="11039000" />
       <workItem from="1437072831986" duration="9713000" />
       <workItem from="1437104753592" duration="133000" />
-      <workItem from="1437110234363" duration="22169000" />
+      <workItem from="1437110234363" duration="29558000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54607000" />
+    <option name="totallyTimeSpent" value="61996000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="736" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1588,7 +1529,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20078126" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31796876" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37909517" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32137287" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1750,13 +1691,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/services/ObserveOperation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="7" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Common/TVObjectID.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1856,26 +1790,26 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
           <folding>
-            <element signature="e#651#652#0" expanded="true" />
-            <element signature="e#676#677#0" expanded="true" />
-            <element signature="e#712#713#0" expanded="true" />
-            <element signature="e#740#741#0" expanded="true" />
-            <element signature="e#772#773#0" expanded="true" />
-            <element signature="e#803#804#0" expanded="true" />
-            <element signature="e#848#849#0" expanded="true" />
-            <element signature="e#888#889#0" expanded="true" />
-            <element signature="e#928#929#0" expanded="true" />
-            <element signature="e#967#968#0" expanded="true" />
-            <element signature="e#1028#1029#0" expanded="true" />
-            <element signature="e#1084#1085#0" expanded="true" />
-            <element signature="e#1118#1119#0" expanded="true" />
-            <element signature="e#1151#1152#0" expanded="true" />
-            <element signature="e#1200#1201#0" expanded="true" />
-            <element signature="e#1244#1245#0" expanded="true" />
-            <element signature="e#1288#1289#0" expanded="true" />
-            <element signature="e#1320#1321#0" expanded="true" />
-            <element signature="e#1378#1379#0" expanded="true" />
-            <element signature="e#1420#1421#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="false" />
+            <element signature="e#676#677#0" expanded="false" />
+            <element signature="e#712#713#0" expanded="false" />
+            <element signature="e#740#741#0" expanded="false" />
+            <element signature="e#772#773#0" expanded="false" />
+            <element signature="e#803#804#0" expanded="false" />
+            <element signature="e#848#849#0" expanded="false" />
+            <element signature="e#888#889#0" expanded="false" />
+            <element signature="e#928#929#0" expanded="false" />
+            <element signature="e#967#968#0" expanded="false" />
+            <element signature="e#1028#1029#0" expanded="false" />
+            <element signature="e#1084#1085#0" expanded="false" />
+            <element signature="e#1118#1119#0" expanded="false" />
+            <element signature="e#1151#1152#0" expanded="false" />
+            <element signature="e#1200#1201#0" expanded="false" />
+            <element signature="e#1244#1245#0" expanded="false" />
+            <element signature="e#1288#1289#0" expanded="false" />
+            <element signature="e#1320#1321#0" expanded="false" />
+            <element signature="e#1378#1379#0" expanded="false" />
+            <element signature="e#1420#1421#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1885,39 +1819,31 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
           <folding>
-            <element signature="e#621#622#0" expanded="true" />
-            <element signature="e#648#649#0" expanded="true" />
-            <element signature="e#685#686#0" expanded="true" />
-            <element signature="e#717#718#0" expanded="true" />
-            <element signature="e#745#746#0" expanded="true" />
-            <element signature="e#772#773#0" expanded="true" />
-            <element signature="e#809#810#0" expanded="true" />
-            <element signature="e#841#842#0" expanded="true" />
-            <element signature="e#867#868#0" expanded="true" />
-            <element signature="e#892#893#0" expanded="true" />
-            <element signature="e#925#926#0" expanded="true" />
-            <element signature="e#953#954#0" expanded="true" />
-            <element signature="e#979#980#0" expanded="true" />
-            <element signature="e#1004#1005#0" expanded="true" />
-            <element signature="e#1037#1038#0" expanded="true" />
-            <element signature="e#1065#1066#0" expanded="true" />
-            <element signature="e#1091#1092#0" expanded="true" />
-            <element signature="e#1116#1117#0" expanded="true" />
-            <element signature="e#1149#1150#0" expanded="true" />
-            <element signature="e#1177#1178#0" expanded="true" />
-            <element signature="e#1210#1211#0" expanded="true" />
-            <element signature="e#1239#1240#0" expanded="true" />
-            <element signature="e#1283#1284#0" expanded="true" />
-            <element signature="e#1319#1320#0" expanded="true" />
+            <element signature="e#621#622#0" expanded="false" />
+            <element signature="e#648#649#0" expanded="false" />
+            <element signature="e#685#686#0" expanded="false" />
+            <element signature="e#717#718#0" expanded="false" />
+            <element signature="e#745#746#0" expanded="false" />
+            <element signature="e#772#773#0" expanded="false" />
+            <element signature="e#809#810#0" expanded="false" />
+            <element signature="e#841#842#0" expanded="false" />
+            <element signature="e#867#868#0" expanded="false" />
+            <element signature="e#892#893#0" expanded="false" />
+            <element signature="e#925#926#0" expanded="false" />
+            <element signature="e#953#954#0" expanded="false" />
+            <element signature="e#979#980#0" expanded="false" />
+            <element signature="e#1004#1005#0" expanded="false" />
+            <element signature="e#1037#1038#0" expanded="false" />
+            <element signature="e#1065#1066#0" expanded="false" />
+            <element signature="e#1091#1092#0" expanded="false" />
+            <element signature="e#1116#1117#0" expanded="false" />
+            <element signature="e#1149#1150#0" expanded="false" />
+            <element signature="e#1177#1178#0" expanded="false" />
+            <element signature="e#1210#1211#0" expanded="false" />
+            <element signature="e#1239#1240#0" expanded="false" />
+            <element signature="e#1283#1284#0" expanded="false" />
+            <element signature="e#1319#1320#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tv/services/ShowData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="50" selection-start-line="63" selection-start-column="50" selection-end-line="63" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1926,11 +1852,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
           <folding>
-            <element signature="e#218#219#0" expanded="true" />
-            <element signature="e#251#252#0" expanded="true" />
-            <element signature="e#283#284#0" expanded="true" />
-            <element signature="e#330#331#0" expanded="true" />
-            <element signature="e#372#373#0" expanded="true" />
+            <element signature="e#218#219#0" expanded="false" />
+            <element signature="e#251#252#0" expanded="false" />
+            <element signature="e#283#284#0" expanded="false" />
+            <element signature="e#330#331#0" expanded="false" />
+            <element signature="e#372#373#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1940,7 +1866,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="81" selection-start-line="38" selection-start-column="81" selection-end-line="38" selection-end-column="81" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1953,36 +1879,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/services/AttributeOperation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="64" selection-start-line="59" selection-start-column="64" selection-end-line="59" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/src.zip!/java/lang/System.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="58" column="19" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tv/services/PrintMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tv/controllers/TVController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="192" column="55" selection-start-line="192" selection-start-column="45" selection-end-line="192" selection-end-column="55" />
           <folding />
         </state>
       </provider>
@@ -1992,16 +1892,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="70" column="26" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tv/repository/TVControlObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2021,16 +1911,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/controllers/LWM2MController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2038,38 +1920,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/services/PrintMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="70" selection-start-line="30" selection-start-column="70" selection-end-line="30" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/SmartHomeApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="120" column="55" selection-start-line="120" selection-start-column="55" selection-end-line="120" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tv/services/RegisterToServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="150" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tv/services/ReportToServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="51" selection-start-line="62" selection-start-column="51" selection-end-line="62" selection-end-column="51" />
           <folding />
         </state>
       </provider>
@@ -2160,10 +2010,110 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tv/repository/TVControlObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tv/services/RegisterToServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tv/services/ShowData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="50" selection-start-line="63" selection-start-column="50" selection-end-line="63" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tv/services/PrintMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="58" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/services/AttributeOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/services/ObserveOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="15" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tv/controllers/TVController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="292" column="29" selection-start-line="292" selection-start-column="29" selection-end-line="292" selection-end-column="29" />
+          <folding>
+            <element signature="e#1304#1305#0" expanded="true" />
+            <element signature="e#1335#1336#0" expanded="true" />
+            <element signature="e#1391#1392#0" expanded="true" />
+            <element signature="e#1439#1440#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/controllers/LWM2MController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="131" column="32" selection-start-line="131" selection-start-column="32" selection-end-line="131" selection-end-column="32" />
+          <folding>
+            <element signature="e#982#983#0" expanded="true" />
+            <element signature="e#1018#1019#0" expanded="true" />
+            <element signature="e#1084#1085#0" expanded="true" />
+            <element signature="e#1145#1146#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/SmartHomeApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="97" column="102" selection-start-line="97" selection-start-column="102" selection-end-line="97" selection-end-column="102" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/LWM2MServer/services/PrintMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="82" selection-start-line="25" selection-start-column="82" selection-end-line="25" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tv/services/ReportToServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="80" column="111" selection-start-line="80" selection-start-column="111" selection-end-line="80" selection-end-column="111" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/tv/TvApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.175676">
-          <caret line="37" column="14" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.5257985">
+          <caret line="90" column="29" selection-start-line="90" selection-start-column="29" selection-end-line="90" selection-end-column="29" />
           <folding />
         </state>
       </provider>

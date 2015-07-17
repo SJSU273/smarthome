@@ -26,11 +26,12 @@ public class AttributeOperation {
         this.resourceId = resourceId;
     }
 
-    public void writeAttribute() {
+    //set step
+    public void writeAttribute(int step) {
         RestTemplate r = new RestTemplate();
 
         LWM2MAttribute attribute = new LWM2MAttribute();
-        attribute.setSt(1);
+        attribute.setSt(step);
 
         url += "/" + objectId + "/" + objectInstanceId + "/" + resourceId;
         System.out.println("Sending the request: " + url);
@@ -38,6 +39,18 @@ public class AttributeOperation {
 
     }
 
+    //Cancel observation
+    public void writeAttribute(String s) {
+        RestTemplate r = new RestTemplate();
+
+        LWM2MAttribute attribute = new LWM2MAttribute();
+        attribute.setCancel(s);
+
+        url += "/" + objectId + "/" + objectInstanceId + "/" + resourceId;
+        System.out.println("Sending the request: " + url);
+        r.put(url, attribute);
+
+    }
     public void discover() {
         RestTemplate r = new RestTemplate();
 
