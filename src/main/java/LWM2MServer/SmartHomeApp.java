@@ -1,7 +1,9 @@
 package LWM2MServer;
 
 import Common.TVObjectID;
+import LWM2MServer.models.ServerTvWatchRecord;
 import LWM2MServer.repository.IoTClientRepository;
+import LWM2MServer.repository.ServerTvWatchRecordRepository;
 import LWM2MServer.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -17,7 +19,10 @@ import java.io.InputStreamReader;
 public class SmartHomeApp implements CommandLineRunner {
 
     @Autowired
-    IoTClientRepository ioTClientRepository;
+    private IoTClientRepository ioTClientRepository;
+
+    @Autowired
+    private ServerTvWatchRecordRepository serverTvWatchRecordRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(SmartHomeApp.class, args);
@@ -40,16 +45,11 @@ public class SmartHomeApp implements CommandLineRunner {
 
                 switch (s) {
 
-                    case "1.1":
-                        ioTClientRepository.deleteAll();
-                        System.out.println("All the registered devices have been removed from database.");
+                    case "1":
+                        System.out.println("Nothing to do.");
 
                         break;
 
-                    case "1.2":
-                        ShowRegisteredDevices showRegisteredDevices = new ShowRegisteredDevices(ioTClientRepository);
-                        showRegisteredDevices.display();
-                        break;
 
                     case "2":
                     case "2.1":
@@ -102,6 +102,24 @@ public class SmartHomeApp implements CommandLineRunner {
 
                     case "3.3":
                         System.out.println("Cancel Observation: T.B.D\n\n");
+                        break;
+
+                    case "4":
+                    case "4.1":
+                        ioTClientRepository.deleteAll();
+                        System.out.println("All the registered devices have been removed from database.");
+
+                        break;
+
+                    case "4.2":
+                        ShowRegisteredDevices showRegisteredDevices = new ShowRegisteredDevices(ioTClientRepository);
+                        showRegisteredDevices.display();
+                        break;
+
+                    case "4.3":
+                        for (ServerTvWatchRecord record: serverTvWatchRecordRepository.findAll()){
+                            System.out.println(record);
+                        }
                         break;
 
 

@@ -1,7 +1,9 @@
 package LWM2MServer.controllers;
 
 import LWM2MServer.models.IoTClient;
+import LWM2MServer.models.ServerTvWatchRecord;
 import LWM2MServer.repository.IoTClientRepository;
+import LWM2MServer.repository.ServerTvWatchRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import LWM2MServer.models.InfoReport;
 import tv.model.RegisterRequest;
 import tv.model.RegisterUpdate;
+import tv.repository.TVChannelObject;
 
 import java.util.LinkedList;
 
@@ -19,7 +22,10 @@ import java.util.LinkedList;
 public class LWM2MController {
 
     @Autowired
-    IoTClientRepository ioTClientRepository;
+    private IoTClientRepository ioTClientRepository;
+
+    @Autowired
+    private ServerTvWatchRecordRepository serverTvWatchRecordRepository;
 
     @RequestMapping(value="/register/tv", method= RequestMethod.PUT)
     private void registerTV(@RequestBody RegisterRequest request) {
@@ -94,13 +100,26 @@ public class LWM2MController {
 
     }
 
-    @RequestMapping(value="/notify", method= RequestMethod.DELETE)
-    public LinkedList<InfoReport> report(@RequestBody InfoReport r) {
-
-     //   if (r == null) return new LinkedList<InfoReport>(new InfoReport(0, "There is no any data in your request!"));
+    @RequestMapping(value="/notify/tv/channel/{endpointClientName}", method= RequestMethod.POST)
+    public String report(@PathVariable("endpointClientName") String endpointClientName, @RequestBody TVChannelObject tvChannelObject) {
 
         //save to database
-        return new LinkedList<InfoReport>();
+        String EPN = "urn:dev:ops:" + endpointClientName;
+
+        ServerTvWatchRecord record = new ServerTvWatchRecord();
+        record.setEndTime(tvChannelObject.getEndTime());
+        record.setChannelName(tvChannelObject.getChannelName());
+        record.setEPN(EPN);
+        record.setChannelID(tvChannelObject.getChannelID());
+        record.setStartTime(tvChannelObject.getStartTime());
+        record.setThisObjectInstanceID(tvChannelObject.getThisObjectInstanceID());
+        record.setThisObjectID(tvChannelObject.getThisObjectID());
+
+        System.out.println(record);
+
+        serverTvWatchRecordRepository.save(record);
+
+        return null;
 
      }
 }

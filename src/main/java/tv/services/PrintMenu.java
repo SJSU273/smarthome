@@ -15,12 +15,13 @@ public class PrintMenu {
         System.out.printf("|%-48s|\n", " 1: Bootstrap");
         System.out.printf("|%-48s|\n", " 2: Register");
         System.out.printf("|%-48s|\n", "    2.1 Register");
-        System.out.printf("|%-48s|\n", "    2.2 update");
+        System.out.printf("|%-48s|\n", "    2.2 Update");
         System.out.printf("|%-48s|\n", "    2.3 De-Register");
         System.out.printf("|%-48s|\n", " 3: Device Management");
         System.out.printf("|%-48s|\n", " 4: Information Report");
+        System.out.printf("|%-48s|\n", "    4.1: Notify");
         System.out.printf("|%-48s|\n", " 5: Tool");
-        System.out.printf("|%-48s|\n", "    5.1: Show All the Data");
+        System.out.printf("|%-48s|\n", "    5.1: Show Objects");
         System.out.printf("|%-48s|\n", "    5.2: Change Channel(up)");
         System.out.printf("|%-48s|\n", "    5.3: Change Channel(down)");
         System.out.printf("|%-48s|\n", "    5.4: Unlock TV");

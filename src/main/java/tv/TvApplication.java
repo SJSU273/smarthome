@@ -35,6 +35,8 @@ public class TvApplication implements CommandLineRunner{
     private TVControlObjectRepository tvControlObjectRepository;
     @Autowired
     private TVAttributeObjectRepository tvAttributeObjectRepository;
+    @Autowired
+    private ClientTvWatchRecordRepository clientTvWatchRecordRepository;
 
     public static void main(String args[])  { SpringApplication.run(TvApplication.class, args); }
 
@@ -112,8 +114,9 @@ public class TvApplication implements CommandLineRunner{
                         System.out.println("T.B.D\n\n");
                         break;
                     case "4":
-                        ReportToServer reportToServer = new ReportToServer();
-                        reportToServer.sendOneReport();
+                    case "4.1":
+                        ReportToServer reportToServer = new ReportToServer(tvAttributeObjectRepository, tvChannelObjectRepository, tvControlObjectRepository, deviceObjectRepository);
+                        reportToServer.notifyTvChannelObject("http://localhost:8081/notify/tv/channel");
                         break;
 
                     case "5":

@@ -13,8 +13,6 @@ public class PrintMenu {
         System.out.printf("|%48s|\n",welcome);
         System.out.println(stars);
         System.out.printf("|%-48s|\n", " 1: Register");
-        System.out.printf("|%-48s|\n", "    1.1: Delete all Registered Devices");
-        System.out.printf("|%-48s|\n", "    1.2: Show all Registered Devices");
         System.out.printf("|%-48s|\n", " 2: Device Management & Service Enablement");
         System.out.printf("|%-48s|\n", "    2.1: Read");
         System.out.printf("|%-48s|\n", "    2.2: Write");
@@ -27,6 +25,10 @@ public class PrintMenu {
         System.out.printf("|%-48s|\n", "    3.1: Observe");
         System.out.printf("|%-48s|\n", "    3.2: Notify");
         System.out.printf("|%-48s|\n", "    3.3: Cancel Observation");
+        System.out.printf("|%-48s|\n", " 4: Tools");
+        System.out.printf("|%-48s|\n", "    4.1: Delete Registered Devices");
+        System.out.printf("|%-48s|\n", "    4.2: Show Registered Devices");
+        System.out.printf("|%-48s|\n", "    4.3: Show Observation Data");
         System.out.println(stars);
         System.out.println("Please input here:");
     }

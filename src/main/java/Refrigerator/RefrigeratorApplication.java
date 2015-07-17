@@ -67,8 +67,8 @@ public class RefrigeratorApplication {
                         System.out.println("T.B.D\n\n");
                         break;
                     case "4":
-                        ReportToServer reportToServer = new ReportToServer();
-                        reportToServer.sendOneReport();
+                        //ReportToServer reportToServer = new ReportToServer();
+                        //reportToServer.sendOneReport();
                         break;
                     case "5":
                         //ShowData showStatus = new ShowData();
