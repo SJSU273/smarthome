@@ -1,5 +1,7 @@
 package tv.controllers;
 
+import Common.LWM2MAttribute;
+import Common.TVChannelId;
 import Common.TVObjectID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +11,7 @@ import tv.repository.*;
 
 
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -34,29 +37,50 @@ public class TVController {
     @Autowired
     private TVChannelObjectRepository tvChannelObjectRepository;
 
+    @Autowired
+    private TVAttributeObjectRepository tvAttributeObjectRepository;
+
     //read by Xiaoxiao Li
     @RequestMapping(value="/value/{objectId}/{objectInstanceId}/{resourceId}", method= RequestMethod.GET)
-    private ResponseEntity<String> read(@PathVariable("objectId") int objectId, @PathVariable("objectInstanceId") int objectInstanceId, @PathVariable("resourceId") int resourceId) {
+    private TVChannelId read(@PathVariable("objectId") int objectId, @PathVariable("objectInstanceId") int objectInstanceId, @PathVariable("resourceId") int resourceId) {
+
+        TVChannelId channelId = null;
 
         System.out.println("Receive Read Message: "
                 + " objectId = "+ objectId
                 + " objectInstanceId = " + objectInstanceId
                 + " resourceId = " + resourceId);
 
+        for (TVControlObject object: tvControlObjectRepository.findAll()) {
+            if (object.getThisObjectID() == objectId && object.getThisObjectInstanceID() == objectInstanceId) {
+                channelId = new TVChannelId(object.getChannelId());
+                System.out.println("Find the record in database");
+                break;
+            }
+        }
         System.out.println("Send Message: 200 (OK)");
 
-        return new ResponseEntity(HttpStatus.OK);
+        return channelId;
 
     }
 
     //write by Xiaoxiao Li
     @RequestMapping(value="/value/{objectId}/{objectInstanceId}/{resourceId}", method= RequestMethod.POST)
-    private ResponseEntity<String> write(@PathVariable("objectId") int objectId, @PathVariable("objectInstanceId") int objectInstanceId, @PathVariable("resourceId") int resourceId) {
+    private ResponseEntity<String> write(@PathVariable("objectId") int objectId, @PathVariable("objectInstanceId") int objectInstanceId, @PathVariable("resourceId") int resourceId, @RequestBody TVChannelId channelId) {
 
         System.out.println("Receive Write Message: "
                 + " objectId = "+ objectId
                 + " objectInstanceId = " + objectInstanceId
                 + " resourceId = " + resourceId);
+
+        for (TVControlObject object: tvControlObjectRepository.findAll()) {
+            if (object.getThisObjectID() == objectId && object.getThisObjectInstanceID() == objectInstanceId) {
+                object.setChannelId(channelId.getChannelId());
+                System.out.println("Find the record in database");
+                tvControlObjectRepository.save(object);
+                break;
+            }
+        }
 
         System.out.println("Send Message: 200 (OK)");
 
@@ -66,27 +90,62 @@ public class TVController {
 
     //discover by Wei Si
     @RequestMapping(value="/attribute/{objectId}/{objectInstanceId}/{resourceId}", method= RequestMethod.GET)
-    private ResponseEntity<String> discover(@PathVariable("objectId") int objectId, @PathVariable("objectInstanceId") int objectInstanceId, @PathVariable("resourceId") int resourceId) {
+    private LWM2MAttribute discover(@PathVariable("objectId") int objectId, @PathVariable("objectInstanceId") int objectInstanceId, @PathVariable("resourceId") int resourceId) {
 
+        LWM2MAttribute attribute = null;
         System.out.println("Receive Discover Message: "
                 + " objectId = "+ objectId
                 + " objectInstanceId = " + objectInstanceId
                 + " resourceId = " + resourceId);
 
+        for (TVAttributeObject object: tvAttributeObjectRepository.findAll()) {
+            if (object.getObjectId() == objectId && object.getObjectInstanceId() == objectInstanceId && object.getResourceId() == resourceId) {
+                attribute = new LWM2MAttribute();
+                attribute.setSt(object.getAttribute().getSt());
+                System.out.println("find the record in database");
+                break;
+            }
+        }
+
+
         System.out.println("Send Message: 200 (OK)");
 
-        return new ResponseEntity(HttpStatus.OK);
+        return attribute;
 
     }
 
     //writeAttributes by Wei Si
     @RequestMapping(value="/attribute/{objectId}/{objectInstanceId}/{resourceId}", method= RequestMethod.PUT)
-    private ResponseEntity<String> writeAttributes(@PathVariable("objectId") int objectId, @PathVariable("objectInstanceId") int objectInstanceId, @PathVariable("resourceId") int resourceId) {
+    private ResponseEntity<String> writeAttributes(@PathVariable("objectId") int objectId, @PathVariable("objectInstanceId") int objectInstanceId, @PathVariable("resourceId") int resourceId, @RequestBody LWM2MAttribute attribute) {
+
+        TVAttributeObject attributeObject = null;
 
         System.out.println("Receive WriteAttributes Message: "
                 + " objectId = "+ objectId
                 + " objectInstanceId = " + objectInstanceId
                 + " resourceId = " + resourceId);
+
+        System.out.println(attribute);
+
+        for (TVAttributeObject object: tvAttributeObjectRepository.findAll()) {
+            if (object.getObjectId() == objectId && object.getObjectInstanceId() == objectInstanceId && object.getResourceId() == resourceId) {
+                attributeObject = object;
+                //System.out.println("find the record in database");
+                break;
+            }
+        }
+        if (attributeObject == null) {
+            attributeObject = new TVAttributeObject();
+            attributeObject.setAttribute(new LWM2MAttribute());
+        }
+
+        attributeObject.setObjectId(objectId);
+        attributeObject.setObjectInstanceId(objectInstanceId);
+        attributeObject.setResourceId(resourceId);
+
+        attributeObject.getAttribute().setSt(attribute.getSt());
+
+        tvAttributeObjectRepository.save(attributeObject);
 
         System.out.println("Send Message: 200 (OK)");
 
@@ -103,6 +162,14 @@ public class TVController {
                 + " objectInstanceId = " + objectInstanceId
                 + " resourceId = " + resourceId);
 
+        for (TVControlObject object: tvControlObjectRepository.findAll()) {
+            if (object.getThisObjectID() == objectId && object.getThisObjectInstanceID() == objectInstanceId) {
+                object.setLock(resourceId);
+                System.out.println("Find the record in database");
+                tvControlObjectRepository.save(object);
+                break;
+            }
+        }
         System.out.println("Send Message: 200 (OK)");
 
         return new ResponseEntity(HttpStatus.OK);

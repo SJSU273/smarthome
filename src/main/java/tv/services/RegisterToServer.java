@@ -2,10 +2,7 @@ package tv.services;
 
 import org.springframework.web.client.RestTemplate;
 import tv.model.*;
-import tv.repository.DeviceObject;
-import tv.repository.LWM2MSecurityObject;
-import tv.repository.LWM2MServerObject;
-import tv.repository.TVControlObject;
+import tv.repository.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,20 +11,32 @@ import java.util.Map;
  * Created by Scott on 6/27/15.
  */
 public class RegisterToServer {
-    LWM2MSecurityObject securityObject;
-    LWM2MServerObject serverObject;
-    DeviceObject deviceObject;
+
+    private LWM2MSecurityObjectRepository lwm2MSecurityObjectRepository;
+    private LWM2MServerObjectRepository lwm2MServerObjectRepository;
+    private DeviceObjectRepository deviceObjectRepository;
+    private TVControlObjectRepository tvControlObjectRepository;
 
     public RegisterToServer() {
     }
 
-    public RegisterToServer(LWM2MSecurityObject securityObject, LWM2MServerObject serverObject, DeviceObject deviceObject) {
-        this.securityObject = securityObject;
-        this.serverObject = serverObject;
-        this.deviceObject = deviceObject;
+    public RegisterToServer(LWM2MSecurityObjectRepository lwm2MSecurityObjectRepository, LWM2MServerObjectRepository lwm2MServerObjectRepository, DeviceObjectRepository deviceObjectRepository, TVControlObjectRepository tvControlObjectRepository) {
+        this.lwm2MSecurityObjectRepository = lwm2MSecurityObjectRepository;
+        this.lwm2MServerObjectRepository = lwm2MServerObjectRepository;
+        this.deviceObjectRepository = deviceObjectRepository;
+        this.tvControlObjectRepository = tvControlObjectRepository;
     }
 
     public void register() {
+
+        LWM2MSecurityObject securityObject;
+        LWM2MServerObject serverObject;
+        DeviceObject deviceObject;
+
+        securityObject = lwm2MSecurityObjectRepository.findAll().get(0);
+        deviceObject = deviceObjectRepository.findAll().get(0);
+        serverObject = lwm2MServerObjectRepository.findAll().get(0);
+
 
         if (securityObject.isBootstrapServer()) {
             System.out.println("Please bootstrap first.");
@@ -62,12 +71,23 @@ public class RegisterToServer {
 
         //Create a TVControlObject after successful registration
         TVControlObject tvControlObject = new TVControlObject();
+        tvControlObject.setChannelId(10);
+        tvControlObject.setVolumeOfVoice(5);
+        tvControlObjectRepository.save(tvControlObject);
+
         return;
 
 
     }
 
     public void update() {
+        LWM2MSecurityObject securityObject;
+        LWM2MServerObject serverObject;
+        DeviceObject deviceObject;
+
+        securityObject = lwm2MSecurityObjectRepository.findAll().get(0);
+        deviceObject = deviceObjectRepository.findAll().get(0);
+        serverObject = lwm2MServerObjectRepository.findAll().get(0);
 
         if (securityObject.isBootstrapServer()) {
             System.out.println("Please bootstrap first.");
@@ -104,6 +124,12 @@ public class RegisterToServer {
     }
 
     public void delete() {
+        LWM2MSecurityObject securityObject;
+        DeviceObject deviceObject;
+
+        securityObject = lwm2MSecurityObjectRepository.findAll().get(0);
+        deviceObject = deviceObjectRepository.findAll().get(0);
+
 
         if (securityObject.isBootstrapServer()) {
             System.out.println("Please bootstrap first.");
@@ -131,6 +157,11 @@ public class RegisterToServer {
         System.out.println("Receiving the response: 200 (OK)");
 
         System.out.println("De-Register successfully.");
+
+        //delete server object after de-register
+        lwm2MServerObjectRepository.deleteAll();
+        tvControlObjectRepository.deleteAll();
+
         return;
 
     }

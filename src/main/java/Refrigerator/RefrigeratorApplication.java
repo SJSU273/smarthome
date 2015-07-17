@@ -46,21 +46,21 @@ public class RefrigeratorApplication {
 
                 switch (s) {
                     case "1":
-                        BootstrapToServer bootstrapToServer = new BootstrapToServer(securityObject, serverObject, device);
-                        bootstrapToServer.boot();
+                        //BootstrapToServer bootstrapToServer = new BootstrapToServer(securityObject, serverObject, device);
+                        //bootstrapToServer.boot();
                         break;
                     case "2":
                     case "2.1":
-                        RegisterToServer request = new RegisterToServer(securityObject,serverObject,device);
-                        request.register();
+                        //RegisterToServer request = new RegisterToServer(securityObject,serverObject,device);
+                        //request.register();
                         break;
                     case "2.2":
-                        RegisterToServer request2 = new RegisterToServer(securityObject,serverObject,device);
-                        request2.update();
+                        //RegisterToServer request2 = new RegisterToServer(securityObject,serverObject,device);
+                        //request2.update();
                         break;
                     case "2.3":
-                        RegisterToServer request3 = new RegisterToServer(securityObject,serverObject,device);
-                        request3.delete();
+                        //RegisterToServer request3 = new RegisterToServer(securityObject,serverObject,device);
+                        //request3.delete();
                         break;
 
                     case "3":
@@ -71,7 +71,7 @@ public class RefrigeratorApplication {
                         reportToServer.sendOneReport();
                         break;
                     case "5":
-                        //ShowStatus showStatus = new ShowStatus();
+                        //ShowData showStatus = new ShowData();
                         //showStatus.show();
                         break;
 

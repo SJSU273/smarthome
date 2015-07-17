@@ -13,9 +13,9 @@ public class TVControlObject {
     private final int thisObjectID = TVObjectID.TV_CONTROL_OBJECT_ID.getValue(); // device = 11
     private final int thisObjectInstanceID = 0; // Single = 0
 
-    private int lock; //Execute resource: Lock the TV (in this project locked status means no operation on console)
-    private int volumeOfVoice; //[0...10]
-    private int channelId; //[1...500]
+    private int lock; // resource id = 0 Execute resource: Lock the TV (in this project locked status means no operation on console)
+    private int volumeOfVoice; //[0...49] resource id = 1
+    private int channelId; //[0...499] resource id = 2
 
     public TVControlObject() {
     }

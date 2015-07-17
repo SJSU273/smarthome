@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Scott on 6/26/15.
  */
 
-public class ShowStatus {
+public class ShowData {
 
     private AccessControlObjectRepository accessControlObjectRepository;
     private DeviceObjectRepository deviceObjectRepository;
@@ -17,14 +17,16 @@ public class ShowStatus {
     private LWM2MServerObjectRepository lwm2MServerObjectRepository;
     private TVChannelObjectRepository tvChannelObjectRepository;
     private TVControlObjectRepository tvControlObjectRepository;
+    private TVAttributeObjectRepository tvAttributeObjectRepository;
 
-    public ShowStatus(AccessControlObjectRepository accessControlObjectRepository, DeviceObjectRepository deviceObjectRepository, LWM2MSecurityObjectRepository lwm2MSecurityObjectRepository, LWM2MServerObjectRepository lwm2MServerObjectRepository, TVChannelObjectRepository tvChannelObjectRepository, TVControlObjectRepository tvControlObjectRepository) {
+    public ShowData(AccessControlObjectRepository accessControlObjectRepository, DeviceObjectRepository deviceObjectRepository, LWM2MSecurityObjectRepository lwm2MSecurityObjectRepository, LWM2MServerObjectRepository lwm2MServerObjectRepository, TVChannelObjectRepository tvChannelObjectRepository, TVControlObjectRepository tvControlObjectRepository, TVAttributeObjectRepository tvAttributeObjectRepository) {
         this.accessControlObjectRepository = accessControlObjectRepository;
         this.deviceObjectRepository = deviceObjectRepository;
         this.lwm2MSecurityObjectRepository = lwm2MSecurityObjectRepository;
         this.lwm2MServerObjectRepository = lwm2MServerObjectRepository;
         this.tvChannelObjectRepository = tvChannelObjectRepository;
         this.tvControlObjectRepository = tvControlObjectRepository;
+        this.tvAttributeObjectRepository = tvAttributeObjectRepository;
     }
 
     public void show() {
@@ -56,6 +58,10 @@ public class ShowStatus {
 
         for(TVChannelObject tvChannelObject: tvChannelObjectRepository.findAll()){
             System.out.println(tvChannelObject);
+        }
+
+        for(TVAttributeObject tvAttributeObject: tvAttributeObjectRepository.findAll()) {
+            System.out.println(tvAttributeObject);
         }
     }
 }

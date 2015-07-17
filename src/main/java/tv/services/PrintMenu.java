@@ -20,8 +20,10 @@ public class PrintMenu {
         System.out.printf("|%-48s|\n", " 3: Device Management");
         System.out.printf("|%-48s|\n", " 4: Information Report");
         System.out.printf("|%-48s|\n", " 5: Tool");
-        System.out.printf("|%-48s|\n", "    5.1: Change Channel");
-        System.out.printf("|%-48s|\n", "    5.2: Show All the Data");
+        System.out.printf("|%-48s|\n", "    5.1: Show All the Data");
+        System.out.printf("|%-48s|\n", "    5.2: Change Channel(up)");
+        System.out.printf("|%-48s|\n", "    5.3: Change Channel(down)");
+        System.out.printf("|%-48s|\n", "    5.4: Unlock TV");
         System.out.println(stars);
         System.out.println("Please input here:");
     }

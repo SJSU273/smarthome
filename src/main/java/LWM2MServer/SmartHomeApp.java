@@ -2,10 +2,7 @@ package LWM2MServer;
 
 import Common.TVObjectID;
 import LWM2MServer.repository.IoTClientRepository;
-import LWM2MServer.services.ObjectOperation;
-import LWM2MServer.services.ObserveOperation;
-import LWM2MServer.services.PrintMenu;
-import LWM2MServer.services.ShowRegisteredDevices;
+import LWM2MServer.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -56,23 +53,28 @@ public class SmartHomeApp implements CommandLineRunner {
 
                     case "2":
                     case "2.1":
-                        System.out.println("Read: T.B.D\n\n");
+                        ValueOperation req21 = new ValueOperation("http://localhost:8082/value", TVObjectID.TV_CONTROL_OBJECT_ID , 0, 2);
+                        req21.read();
                         break;
 
                     case "2.2":
-                        System.out.println("Discover: T.B.D\n\n");
+                        ValueOperation req23 = new ValueOperation("http://localhost:8082/value", TVObjectID.TV_CONTROL_OBJECT_ID , 0, 2);
+                        req23.write();
                         break;
 
                     case "2.3":
-                        System.out.println("Write: T.B.D\n\n");
+                        AttributeOperation req1 = new AttributeOperation("http://localhost:8082/attribute", TVObjectID.TV_CHANNEL_OBJECT_ID , 0, 4);
+                        req1.discover();
                         break;
 
                     case "2.4":
-                        System.out.println("Write Attributes: T.B.D\n\n");
+                        AttributeOperation req2 = new AttributeOperation("http://localhost:8082/attribute", TVObjectID.TV_CHANNEL_OBJECT_ID , 0, 4);
+                        req2.writeAttribute();
                         break;
 
                     case "2.5":
-                        System.out.println("Execute: T.B.D\n\n");
+                        AttributeOperation req25 = new AttributeOperation("http://localhost:8082/attribute", TVObjectID.TV_CONTROL_OBJECT_ID , 0, 1);
+                        req25.execute();
                         break;
 
                     case "2.6":

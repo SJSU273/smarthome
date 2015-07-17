@@ -3,28 +3,27 @@ package tv.services;
 import org.springframework.web.client.RestTemplate;
 import tv.model.BootstrapRequest;
 import tv.model.BootstrapResponse;
-import tv.repository.DeviceObject;
-import tv.repository.LWM2MSecurityObject;
-import tv.repository.LWM2MServerObject;
+import tv.repository.*;
 
 /**
  * Created by Scott on 6/26/15.
  */
 public class BootstrapToServer {
 
-    LWM2MSecurityObject securityObject;
-    LWM2MServerObject serverObject;
-    DeviceObject device;
+    private LWM2MSecurityObjectRepository lwm2MSecurityObjectRepository;
+    private LWM2MServerObjectRepository lwm2MServerObjectRepository;
+    private DeviceObjectRepository deviceObjectRepository;
 
-
-
-    public BootstrapToServer(LWM2MSecurityObject securityObject, LWM2MServerObject serverObject, DeviceObject device) {
-        this.securityObject = securityObject;
-        this.serverObject = serverObject;
-        this.device = device;
+    public BootstrapToServer(LWM2MSecurityObjectRepository lwm2MSecurityObjectRepository, LWM2MServerObjectRepository lwm2MServerObjectRepository, DeviceObjectRepository deviceObjectRepository) {
+        this.lwm2MSecurityObjectRepository = lwm2MSecurityObjectRepository;
+        this.lwm2MServerObjectRepository = lwm2MServerObjectRepository;
+        this.deviceObjectRepository = deviceObjectRepository;
     }
 
     public void boot() {
+
+        LWM2MSecurityObject securityObject = lwm2MSecurityObjectRepository.findAll().get(0);
+        DeviceObject device = deviceObjectRepository.findAll().get(0);
 
         String uri = securityObject.getLWM2MServerURI();
 
@@ -50,10 +49,13 @@ public class BootstrapToServer {
         }
 
         // save register server info
-        this.securityObject.setLWM2MServerURI(response.getLWM2MServerURI());
-        this.securityObject.setBootstrapServer(false);
+        securityObject.setLWM2MServerURI(response.getLWM2MServerURI());
+        securityObject.setBootstrapServer(false);
+
+        lwm2MSecurityObjectRepository.save(securityObject);
 
         // save server object data
+        LWM2MServerObject serverObject = new LWM2MServerObject();
         serverObject.setNotificationStoringWhenDisabledOrOffline(response.getServerObject().isNotificationStoringWhenDisabledOrOffline());
         serverObject.setShortServerID(response.getServerObject().getShortServerID());
         serverObject.setLifetime(response.getServerObject().getLifetime());
@@ -61,6 +63,8 @@ public class BootstrapToServer {
         serverObject.setDefaultMinimumPeriod(response.getServerObject().getDefaultMinimumPeriod());
         serverObject.setDefaultMaximumPeriod(response.getServerObject().getDefaultMaximumPeriod());
         serverObject.setBindingPreference(response.getServerObject().getBindingPreference());
+
+        lwm2MServerObjectRepository.save(serverObject);
 
 
     }
