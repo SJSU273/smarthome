@@ -30,10 +30,6 @@ public class ObjectOperation {
 
         System.out.println("Receiving the response: " + response);
 
-        if (response == null) {
-            System.out.println("Bootstrap failed.");
-            return;
-        }
     }
 
     public void delete() {
