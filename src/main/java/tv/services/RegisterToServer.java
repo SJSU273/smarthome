@@ -1,5 +1,7 @@
 package tv.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import tv.model.*;
 import tv.repository.*;
@@ -10,21 +12,19 @@ import java.util.Map;
 /**
  * Created by Scott on 6/27/15.
  */
+@Component
 public class RegisterToServer {
 
+    @Autowired
     private LWM2MSecurityObjectRepository lwm2MSecurityObjectRepository;
+    @Autowired
     private LWM2MServerObjectRepository lwm2MServerObjectRepository;
+    @Autowired
     private DeviceObjectRepository deviceObjectRepository;
+    @Autowired
     private TVControlObjectRepository tvControlObjectRepository;
 
     public RegisterToServer() {
-    }
-
-    public RegisterToServer(LWM2MSecurityObjectRepository lwm2MSecurityObjectRepository, LWM2MServerObjectRepository lwm2MServerObjectRepository, DeviceObjectRepository deviceObjectRepository, TVControlObjectRepository tvControlObjectRepository) {
-        this.lwm2MSecurityObjectRepository = lwm2MSecurityObjectRepository;
-        this.lwm2MServerObjectRepository = lwm2MServerObjectRepository;
-        this.deviceObjectRepository = deviceObjectRepository;
-        this.tvControlObjectRepository = tvControlObjectRepository;
     }
 
     public void register() {

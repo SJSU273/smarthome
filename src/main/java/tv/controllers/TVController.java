@@ -47,6 +47,9 @@ public class TVController {
     @Autowired
     private ClientTvWatchRecordRepository clientTvWatchRecordRepository;
 
+    @Autowired
+    private ReportToServer report;
+
     public static boolean isObserved() {
         return observed;
     }
@@ -99,8 +102,7 @@ public class TVController {
                     tvControlObjectRepository.save(object);
 
                     // Notify server
-                    ReportToServer reportToServer53 = new ReportToServer(tvAttributeObjectRepository, tvChannelObjectRepository, tvControlObjectRepository, deviceObjectRepository, clientTvWatchRecordRepository);
-                    reportToServer53.notifyTvChannelObject("http://localhost:8081/notify/tv/channel");
+                    report.notifyTvChannelObject("http://localhost:8081/notify/tv/channel");
 
                 }
                      break;

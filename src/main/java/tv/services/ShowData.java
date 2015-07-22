@@ -1,6 +1,8 @@
 package tv.services;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import tv.repository.*;
 
 import java.util.List;
@@ -8,26 +10,24 @@ import java.util.List;
 /**
  * Created by Scott on 6/26/15.
  */
-
+@Component
 public class ShowData {
 
+    @Autowired
     private AccessControlObjectRepository accessControlObjectRepository;
+    @Autowired
     private DeviceObjectRepository deviceObjectRepository;
+    @Autowired
     private LWM2MSecurityObjectRepository lwm2MSecurityObjectRepository;
+    @Autowired
     private LWM2MServerObjectRepository lwm2MServerObjectRepository;
+    @Autowired
     private TVChannelObjectRepository tvChannelObjectRepository;
+    @Autowired
     private TVControlObjectRepository tvControlObjectRepository;
+    @Autowired
     private TVAttributeObjectRepository tvAttributeObjectRepository;
 
-    public ShowData(AccessControlObjectRepository accessControlObjectRepository, DeviceObjectRepository deviceObjectRepository, LWM2MSecurityObjectRepository lwm2MSecurityObjectRepository, LWM2MServerObjectRepository lwm2MServerObjectRepository, TVChannelObjectRepository tvChannelObjectRepository, TVControlObjectRepository tvControlObjectRepository, TVAttributeObjectRepository tvAttributeObjectRepository) {
-        this.accessControlObjectRepository = accessControlObjectRepository;
-        this.deviceObjectRepository = deviceObjectRepository;
-        this.lwm2MSecurityObjectRepository = lwm2MSecurityObjectRepository;
-        this.lwm2MServerObjectRepository = lwm2MServerObjectRepository;
-        this.tvChannelObjectRepository = tvChannelObjectRepository;
-        this.tvControlObjectRepository = tvControlObjectRepository;
-        this.tvAttributeObjectRepository = tvAttributeObjectRepository;
-    }
 
     public void show() {
         String stars = new String(new char[50]).replace("\0", "-");

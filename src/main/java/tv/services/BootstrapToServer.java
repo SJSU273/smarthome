@@ -1,5 +1,7 @@
 package tv.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import tv.model.BootstrapRequest;
 import tv.model.BootstrapResponse;
@@ -8,17 +10,15 @@ import tv.repository.*;
 /**
  * Created by Scott on 6/26/15.
  */
+
+@Component
 public class BootstrapToServer {
-
+    @Autowired
     private LWM2MSecurityObjectRepository lwm2MSecurityObjectRepository;
+    @Autowired
     private LWM2MServerObjectRepository lwm2MServerObjectRepository;
+    @Autowired
     private DeviceObjectRepository deviceObjectRepository;
-
-    public BootstrapToServer(LWM2MSecurityObjectRepository lwm2MSecurityObjectRepository, LWM2MServerObjectRepository lwm2MServerObjectRepository, DeviceObjectRepository deviceObjectRepository) {
-        this.lwm2MSecurityObjectRepository = lwm2MSecurityObjectRepository;
-        this.lwm2MServerObjectRepository = lwm2MServerObjectRepository;
-        this.deviceObjectRepository = deviceObjectRepository;
-    }
 
     public void boot() {
 

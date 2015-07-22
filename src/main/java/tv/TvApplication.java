@@ -23,10 +23,8 @@ public class TvApplication implements CommandLineRunner{
 
     @Autowired
     private DeviceObjectRepository deviceObjectRepository;
-
     @Autowired
     private LWM2MSecurityObjectRepository lwm2MSecurityObjectRepository;
-
     @Autowired
     private LWM2MServerObjectRepository lwm2MServerObjectRepository;
     @Autowired
@@ -37,6 +35,19 @@ public class TvApplication implements CommandLineRunner{
     private TVAttributeObjectRepository tvAttributeObjectRepository;
     @Autowired
     private ClientTvWatchRecordRepository clientTvWatchRecordRepository;
+
+    @Autowired
+    private ShowData showStatus;
+
+    @Autowired
+    private BootstrapToServer boot;
+
+    @Autowired
+    private RegisterToServer register;
+
+    @Autowired
+    private ReportToServer report;
+
 
     public static void main(String args[])  { SpringApplication.run(TvApplication.class, args); }
 
@@ -93,21 +104,17 @@ public class TvApplication implements CommandLineRunner{
 
                 switch (s) {
                     case "1":
-                        BootstrapToServer bootstrapToServer = new BootstrapToServer(lwm2MSecurityObjectRepository,lwm2MServerObjectRepository,deviceObjectRepository);
-                        bootstrapToServer.boot();
+                        boot.boot();
                         break;
                     case "2":
                     case "2.1":
-                        RegisterToServer registerRequest = new RegisterToServer(lwm2MSecurityObjectRepository,lwm2MServerObjectRepository,deviceObjectRepository,tvControlObjectRepository);
-                        registerRequest.register();
+                        register.register();
                         break;
                     case "2.2":
-                        RegisterToServer updateRequest = new RegisterToServer(lwm2MSecurityObjectRepository,lwm2MServerObjectRepository,deviceObjectRepository,tvControlObjectRepository);
-                        updateRequest.update();
+                        register.update();
                         break;
                     case "2.3":
-                        RegisterToServer deregisterRequest = new RegisterToServer(lwm2MSecurityObjectRepository,lwm2MServerObjectRepository,deviceObjectRepository,tvControlObjectRepository);
-                        deregisterRequest.delete();
+                        register.delete();
                         break;
 
                     case "3":
@@ -115,8 +122,7 @@ public class TvApplication implements CommandLineRunner{
                         break;
                     case "4":
                     case "4.1":
-                        ReportToServer reportToServer = new ReportToServer(tvAttributeObjectRepository, tvChannelObjectRepository, tvControlObjectRepository, deviceObjectRepository, clientTvWatchRecordRepository);
-                        reportToServer.notifyTvChannelObject("http://localhost:8081/notify/tv/channel");
+                        report.notifyTvChannelObject("http://localhost:8081/notify/tv/channel");
                         break;
 
                     case "5":
@@ -129,8 +135,7 @@ public class TvApplication implements CommandLineRunner{
                             tvControlObject.setChannelId((tvControlObject.getChannelId()+1) % 500);
                             tvControlObjectRepository.save(tvControlObject);
 
-                            ReportToServer reportToServer52 = new ReportToServer(tvAttributeObjectRepository, tvChannelObjectRepository, tvControlObjectRepository, deviceObjectRepository, clientTvWatchRecordRepository);
-                            reportToServer52.notifyTvChannelObject("http://localhost:8081/notify/tv/channel");
+                            report.notifyTvChannelObject("http://localhost:8081/notify/tv/channel");
 
                         } else {
                             System.out.println("Error: Can't find TV Control Object. Please check if TV has registered already.");
@@ -144,8 +149,7 @@ public class TvApplication implements CommandLineRunner{
                             TVControlObject tvControlObject = l.get(0);
                             tvControlObject.setChannelId((tvControlObject.getChannelId() + 500 - 1) % 500);
                             tvControlObjectRepository.save(tvControlObject);
-                            ReportToServer reportToServer53 = new ReportToServer(tvAttributeObjectRepository, tvChannelObjectRepository, tvControlObjectRepository, deviceObjectRepository, clientTvWatchRecordRepository);
-                            reportToServer53.notifyTvChannelObject("http://localhost:8081/notify/tv/channel");
+                            report.notifyTvChannelObject("http://localhost:8081/notify/tv/channel");
 
                         } else {
                             System.out.println("Error: Can't find TV Control Object. Please check if TV has registered already.");
@@ -162,7 +166,6 @@ public class TvApplication implements CommandLineRunner{
                         break;
 
                     case "5.4":
-                        ShowData showStatus = new ShowData(accessControlObjectRepository, deviceObjectRepository, lwm2MSecurityObjectRepository,lwm2MServerObjectRepository, tvChannelObjectRepository, tvControlObjectRepository, tvAttributeObjectRepository);
                         showStatus.show();
                         break;
 

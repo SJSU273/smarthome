@@ -39,7 +39,6 @@ public class ValueOperation {
         System.out.println("Sending the request (Set Channel = " + i + ") to " + url);
         String s = r.postForObject(url, channelId, String.class );
         System.out.println("Receive response message from " + url );
-        System.out.println(s);
 
     }
 

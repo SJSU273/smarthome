@@ -1,5 +1,8 @@
 package tv.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import LWM2MServer.models.InfoReport;
 import tv.controllers.TVController;
@@ -14,23 +17,21 @@ import java.util.Map;
 /**
  * Created by Scott on 6/26/15.
  */
+@Component
 public class ReportToServer {
 
+    @Autowired
     private TVAttributeObjectRepository tvAttributeObjectRepository;
+    @Autowired
     private TVChannelObjectRepository tvChannelObjectRepository;
+    @Autowired
     private TVControlObjectRepository tvControlObjectRepository;
+    @Autowired
     private DeviceObjectRepository deviceObjectRepository;
+    @Autowired
     private ClientTvWatchRecordRepository clientTvWatchRecordRepository;
 
     public ReportToServer() {
-    }
-
-    public ReportToServer(TVAttributeObjectRepository tvAttributeObjectRepository, TVChannelObjectRepository tvChannelObjectRepository, TVControlObjectRepository tvControlObjectRepository, DeviceObjectRepository deviceObjectRepository, ClientTvWatchRecordRepository clientTvWatchRecordRepository) {
-        this.tvAttributeObjectRepository = tvAttributeObjectRepository;
-        this.tvChannelObjectRepository = tvChannelObjectRepository;
-        this.tvControlObjectRepository = tvControlObjectRepository;
-        this.deviceObjectRepository = deviceObjectRepository;
-        this.clientTvWatchRecordRepository = clientTvWatchRecordRepository;
     }
 
     public void notifyTvChannelObject(String uri) {
