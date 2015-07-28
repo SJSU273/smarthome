@@ -40,17 +40,30 @@ public class ReportToServer {
         String ModelNumber = null;
         String SerialNumber = null;
 
-        if (!TVController.isObserved()) {
-            return;
-        }
+
 
         RestTemplate restTemplate = new RestTemplate();
         for (TVChannelObject object: tvChannelObjectRepository.findAll()) {
             //find the anyone
             tvChannelObject = object;
-            System.out.println("find the channel object: " + tvChannelObject);
+            //System.out.println("find the channel object: " + tvChannelObject);
             break;
         }
+
+        if (!TVController.isObserved()) {
+            //update TV Channel object
+            for (TVControlObject controlObject: tvControlObjectRepository.findAll()) {
+                tvChannelObject.setChannelID(controlObject.getChannelId());
+                tvChannelObject.setChannelName("BBC-" + tvChannelObject.getChannelID());
+                break;
+            }
+            tvChannelObject.setStartTime(tvChannelObject.getEndTime());
+            tvChannelObject.setEndTime(null);
+            tvChannelObjectRepository.save(tvChannelObject);
+
+            return;
+        }
+
         if (tvChannelObject != null) {
 
             uri += "/{endpointClientName}";
@@ -95,6 +108,7 @@ public class ReportToServer {
             for (TVControlObject controlObject: tvControlObjectRepository.findAll()) {
                 tvChannelObject.setChannelID(controlObject.getChannelId());
                 tvChannelObject.setChannelName("BBC-" + tvChannelObject.getChannelID());
+                break;
             }
             tvChannelObject.setStartTime(tvChannelObject.getEndTime());
             tvChannelObject.setEndTime(null);

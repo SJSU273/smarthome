@@ -11,6 +11,7 @@ import tv.services.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Date;
 import java.util.List;
 
 
@@ -139,13 +140,6 @@ public class TvApplication implements CommandLineRunner{
                             tvControlObject.setChannelId((tvControlObject.getChannelId()+1) % 500);
                             tvControlObjectRepository.save(tvControlObject);
 
-                            for (TVChannelObject m : tvChannelObjectRepository.findAll()) {
-                                m.setChannelID(tvControlObject.getChannelId());
-                                m.setChannelName("BBC-"+m.getChannelID());
-                                tvChannelObjectRepository.save(m);
-                            }
-
-
                             report.notifyTvChannelObject("http://localhost:8081/notify/tv/channel");
 
                         } else {
@@ -161,11 +155,6 @@ public class TvApplication implements CommandLineRunner{
                             tvControlObject.setChannelId((tvControlObject.getChannelId() + 500 - 1) % 500);
                             tvControlObjectRepository.save(tvControlObject);
 
-                            for (TVChannelObject m : tvChannelObjectRepository.findAll()) {
-                                m.setChannelID(tvControlObject.getChannelId());
-                                m.setChannelName("BBC-"+m.getChannelID());
-                                tvChannelObjectRepository.save(m);
-                            }
 
                             report.notifyTvChannelObject("http://localhost:8081/notify/tv/channel");
 

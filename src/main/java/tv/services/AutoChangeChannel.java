@@ -53,14 +53,8 @@ public class AutoChangeChannel {
             System.out.println("The channel is changed from " + l.getChannelId() + " to "+i);
 
             l.setChannelId(i);
+
             tvControlObjectRepository.save(l);
-
-
-            for (TVChannelObject m : tvChannelObjectRepository.findAll()) {
-                m.setChannelID(i);
-                m.setChannelName("BBC-"+m.getChannelID());
-                tvChannelObjectRepository.save(m);
-            }
 
             report.notifyTvChannelObject("http://localhost:8081/notify/tv/channel");
 

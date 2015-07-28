@@ -224,7 +224,7 @@ public class TVController {
                 TVChannelObject tvChannelObject = new TVChannelObject();
                 //default value
                 tvChannelObject.setChannelID(1);
-                tvChannelObject.setChannelName("BBC-1");
+                tvChannelObject.setChannelName("BBC-"+tvChannelObject.getChannelID());
                 tvChannelObject.setStartTime(new Date());
 
 
@@ -232,12 +232,14 @@ public class TVController {
                 for (TVControlObject controlObject: tvControlObjectRepository.findAll()){
                     tvChannelObject.setChannelID(controlObject.getChannelId());
                     tvChannelObject.setChannelName("BBC-"+tvChannelObject.getChannelID());
+                    break;
                 }
 
 
                 tvChannelObjectRepository.save(tvChannelObject);
 
                 break;
+
             default:
                 System.out.println("Send Message: 20X (NOT FOUND)");
 
@@ -283,7 +285,7 @@ public class TVController {
     @RequestMapping(value="/observe/{objectId}/{objectInstanceId}/{resourceId}", method= RequestMethod.GET)
     private ResponseEntity<String> observe(@PathVariable("objectId") int objectId, @PathVariable("objectInstanceId") int objectInstanceId, @PathVariable("resourceId") int resourceId) {
 
-        System.out.println("Received Message 3: "
+        System.out.println("Received Message: "
                 + " objectId = "+ objectId
                 + " objectInstanceId = " + objectInstanceId
                 + " resourceId" + resourceId);
@@ -295,6 +297,23 @@ public class TVController {
         this.observed = true;
 
         return new ResponseEntity(HttpStatus.OK);
+
+    }
+
+    //observe by Hongbo Tian
+    @RequestMapping(value="/tv/{id}/records/current", method= RequestMethod.GET)
+    private TVChannelObject getCurrentChannel(@PathVariable("id") String id) {
+
+        System.out.println("Received Message : "
+                + " id = "+ id);
+
+        System.out.println("Replied Message: 200 (OK)");
+
+        for (TVChannelObject o : tvChannelObjectRepository.findAll()) {
+            return o;
+        }
+
+        return new TVChannelObject();
 
     }
 
