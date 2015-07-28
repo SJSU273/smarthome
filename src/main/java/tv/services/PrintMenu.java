@@ -26,6 +26,8 @@ public class PrintMenu {
         System.out.printf("|%-48s|\n", "    5.3: Unlock TV");
         System.out.printf("|%-48s|\n", "    5.4: Show Objects");
         System.out.printf("|%-48s|\n", "    5.5: Show Data");
+        System.out.printf("|%-48s|\n", "    5.6: Start Change Channel");
+        System.out.printf("|%-48s|\n", "    5.7: Stop Change Channel");
         System.out.println(stars);
         System.out.println("Please input here:");
     }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import tv.repository.*;
 import tv.services.*;
 
@@ -17,6 +18,7 @@ import java.util.List;
  * Created by Scott on 6/13/15.
  */
 @SpringBootApplication
+@EnableScheduling
 public class TvApplication implements CommandLineRunner{
     @Autowired
     private AccessControlObjectRepository accessControlObjectRepository;
@@ -48,6 +50,8 @@ public class TvApplication implements CommandLineRunner{
     @Autowired
     private ReportToServer report;
 
+    @Autowired
+    private AutoChangeChannel autoChangeChannel;
 
     public static void main(String args[])  { SpringApplication.run(TvApplication.class, args); }
 
@@ -135,6 +139,13 @@ public class TvApplication implements CommandLineRunner{
                             tvControlObject.setChannelId((tvControlObject.getChannelId()+1) % 500);
                             tvControlObjectRepository.save(tvControlObject);
 
+                            for (TVChannelObject m : tvChannelObjectRepository.findAll()) {
+                                m.setChannelID(tvControlObject.getChannelId());
+                                m.setChannelName("BBC-"+m.getChannelID());
+                                tvChannelObjectRepository.save(m);
+                            }
+
+
                             report.notifyTvChannelObject("http://localhost:8081/notify/tv/channel");
 
                         } else {
@@ -149,6 +160,13 @@ public class TvApplication implements CommandLineRunner{
                             TVControlObject tvControlObject = l.get(0);
                             tvControlObject.setChannelId((tvControlObject.getChannelId() + 500 - 1) % 500);
                             tvControlObjectRepository.save(tvControlObject);
+
+                            for (TVChannelObject m : tvChannelObjectRepository.findAll()) {
+                                m.setChannelID(tvControlObject.getChannelId());
+                                m.setChannelName("BBC-"+m.getChannelID());
+                                tvChannelObjectRepository.save(m);
+                            }
+
                             report.notifyTvChannelObject("http://localhost:8081/notify/tv/channel");
 
                         } else {
@@ -176,8 +194,20 @@ public class TvApplication implements CommandLineRunner{
                         }
                         break;
 
+                    case "5.6":
+                        //start change channel automatically
+                        System.out.println("Start to change channel automatically in every 5 seconds.");
+                        autoChangeChannel.setStop(false);
+                        break;
+
+                    case "5.7":
+                        //stop change channel automatically
+                        System.out.println("Stop to change channel automatically.");
+                        autoChangeChannel.setStop(true);
+                        break;
+
                     default:
-                        System.out.println("Please input numbers 1 2.1 2.2 2.3 3 4 5.1 5.2 5.3 5.4\n\n");
+                        System.out.println("Please input command: \n\n");
 
                 }
             }

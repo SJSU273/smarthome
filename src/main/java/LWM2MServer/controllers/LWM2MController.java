@@ -1,9 +1,12 @@
 package LWM2MServer.controllers;
 
+import Common.TVObjectID;
 import LWM2MServer.models.IoTClient;
 import LWM2MServer.models.ServerTvWatchRecord;
 import LWM2MServer.repository.IoTClientRepository;
 import LWM2MServer.repository.ServerTvWatchRecordRepository;
+import LWM2MServer.services.AttributeOperation;
+import LWM2MServer.services.ObserveOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -137,4 +140,44 @@ public class LWM2MController {
         return null;
 
      }
+
+    //For application
+    @RequestMapping(value="/tv/{id}/observe", method = RequestMethod.POST)
+    public void TVObserve(@PathVariable("id") int id) {
+
+        System.out.println("TV was set to be observed, id = " + id);
+
+        ObserveOperation observeRequest = new ObserveOperation();
+        observeRequest.observe();
+        LWM2MController.setCancelObserve(false);
+        System.out.println("Observation is set, and client is going to notify its data.");
+
+    }
+
+    @RequestMapping(value="/tv/{id}/observe", method = RequestMethod.DELETE)
+    public void TVCancelObservation(@PathVariable("id") int id) {
+        System.out.println("TV was set to stop observe, id = " + id);
+
+        AttributeOperation req = new AttributeOperation("http://localhost:8082/attribute", TVObjectID.TV_CHANNEL_OBJECT_ID , 0, 4);
+        req.writeAttribute("stop");
+
+    }
+
+    @RequestMapping(value = "/tv/{id}/lock", method = RequestMethod.POST)
+    public void TVLock(@PathVariable("id") int id) {
+
+        System.out.println("TV was set to be locked, id = " + id);
+        AttributeOperation req = new AttributeOperation("http://localhost:8082/attribute", TVObjectID.TV_CONTROL_OBJECT_ID , 0, 1);
+        req.execute();
+
+    }
+
+    @RequestMapping(value = "/tv/{id}/lock", method = RequestMethod.DELETE)
+    public void TVUnlock(@PathVariable("id") int id) {
+        System.out.println("TV was set to be unlocked, id = " + id);
+
+        AttributeOperation req = new AttributeOperation("http://localhost:8082/attribute", TVObjectID.TV_CONTROL_OBJECT_ID , 0, 0);
+        req.execute();
+
+    }
 }
