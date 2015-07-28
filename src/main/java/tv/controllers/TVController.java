@@ -226,6 +226,7 @@ public class TVController {
                 tvChannelObject.setChannelID(1);
                 tvChannelObject.setChannelName("BBC-"+tvChannelObject.getChannelID());
                 tvChannelObject.setStartTime(new Date());
+                tvChannelObject.setEndTime(null);
 
 
                 //try to get current channel id from TV Control Object
