@@ -49,7 +49,7 @@ public class AutoChangeChannel {
         for (TVControlObject l : tvControlObjectRepository.findAll()) {
 
             Random random = new Random();
-            int i = random.nextInt(500);
+            int i = random.nextInt(10);
             System.out.println("The channel is changed from " + l.getChannelId() + " to "+i);
 
             l.setChannelId(i);

@@ -301,7 +301,7 @@ public class TVController {
 
     }
 
-    //observe by Hongbo Tian
+    //get by Hongbo Tian
     @RequestMapping(value="/tv/{id}/records/current", method= RequestMethod.GET)
     private TVChannelObject getCurrentChannel(@PathVariable("id") String id) {
 

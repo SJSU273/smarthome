@@ -20,7 +20,7 @@ public class ObjectOperation {
 
     public void create() {
 
-        String s = "hello";
+        String s = "create";
 
         RestTemplate r = new RestTemplate();
         url += "/" + objectId + "/" + objectInstanceId;
@@ -40,8 +40,5 @@ public class ObjectOperation {
         r.delete(url);
 
         System.out.println("Receiving the response: ");
-
-
     }
-
 }
