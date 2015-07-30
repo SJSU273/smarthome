@@ -50,8 +50,11 @@ public class ReportToServer {
             break;
         }
 
+        if (tvChannelObject == null ) return;
+
         if (!TVController.isObserved()) {
-            //update TV Channel object
+
+            //if TV is not under observation, then only update TV Channel object
             for (TVControlObject controlObject: tvControlObjectRepository.findAll()) {
                 tvChannelObject.setChannelID(controlObject.getChannelId());
                 tvChannelObject.setChannelName("BBC-" + tvChannelObject.getChannelID());
@@ -61,11 +64,9 @@ public class ReportToServer {
             tvChannelObject.setEndTime(null);
             tvChannelObjectRepository.save(tvChannelObject);
 
-            return;
-        }
+        } else {
 
-        if (tvChannelObject != null) {
-
+            //notify first, then update TV channel object
             uri += "/{endpointClientName}";
 
             for (DeviceObject deviceObject: deviceObjectRepository.findAll()) {
@@ -115,6 +116,7 @@ public class ReportToServer {
             tvChannelObjectRepository.save(tvChannelObject);
 
         }
+        return;
     }
 
 }
