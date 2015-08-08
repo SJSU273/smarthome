@@ -44,6 +44,12 @@ public class AutoChangeChannel {
     public void reportCurrentTime() {
         if (isStop()) {return;}
 
+        for(TVControlObject o: tvControlObjectRepository.findAll()) {
+            if (o.getLock() == 1) return;
+            break;
+        }
+
+
         System.out.println("The time is now " + dateFormat.format(new Date()));
         // change the TV Channel up
         for (TVControlObject l : tvControlObjectRepository.findAll()) {

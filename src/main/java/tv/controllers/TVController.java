@@ -305,10 +305,10 @@ public class TVController {
     @RequestMapping(value="/tv/{id}/records/current", method= RequestMethod.GET)
     private TVChannelObject getCurrentChannel(@PathVariable("id") String id) {
 
-        System.out.println("Received Message : "
-                + " id = "+ id);
+        //System.out.println("Received Message : "
+        //        + " id = "+ id);
 
-        System.out.println("Replied Message: 200 (OK)");
+        //System.out.println("Replied Message: 200 (OK)");
 
         for (TVChannelObject o : tvChannelObjectRepository.findAll()) {
             return o;
